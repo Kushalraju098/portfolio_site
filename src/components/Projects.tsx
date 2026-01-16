@@ -6,7 +6,7 @@ const projects = [
     title: "Cybercrime Analysis Dashboard",
     description: "An exploratory analytics project analyzing cybercrime trends across Canada. Includes preprocessing, visualization, and reporting of trend patterns and year-over-year insights using Power BI and Python.",
     image: "📊",
-    tools: ["Python", "Power BI", "Data Cleaning", "Data Visualization"],
+    tools: ["R", "Power BI","Git","Github", "Data Cleaning", "Data Visualization"],
     icon: Shield,
     color: "from-primary to-accent",
     highlights: ["Dynamic Dashboards", "Trend Analysis", "YoY Insights"],
