@@ -9,6 +9,7 @@ const certifications = [
     description: "Foundational knowledge of core data concepts and Azure data services including relational, non-relational, and analytics workloads.",
     color: "from-primary to-accent",
     badge: "☁️",
+    verifyUrl: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/6ef7e3420ba11230",
   },
   {
     title: "Azure AI Fundamentals",
@@ -17,6 +18,7 @@ const certifications = [
     description: "Core concepts related to artificial intelligence and machine learning workloads on Microsoft Azure.",
     color: "from-accent to-cyan",
     badge: "🤖",
+    verifyUrl: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/b2426d4d0678c506",
   },
 ];
 
@@ -78,13 +80,20 @@ const Certifications = () => {
                 </div>
 
                 {/* CTA */}
-                <Button
-                  variant="outline"
-                  className="w-full gap-2 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                <a
+                  href={cert.verifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  Verify Certificate
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full gap-2 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Verify Certificate
+                  </Button>
+                </a>
               </div>
             </div>
           ))}

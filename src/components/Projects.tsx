@@ -84,14 +84,18 @@ const Projects = () => {
 
                 {/* Actions */}
                 <div className="flex gap-4">
-                  <Button className="btn-gradient gap-2 flex-1">
-                    <ExternalLink className="w-4 h-4" />
-                    View Project
-                  </Button>
-                  <Button variant="outline" className="gap-2 border-2 flex-1">
-                    <Github className="w-4 h-4" />
-                    View Code
-                  </Button>
+                  <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button className="btn-gradient gap-2 w-full">
+                      <ExternalLink className="w-4 h-4" />
+                      View Project
+                    </Button>
+                  </a>
+                  <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="outline" className="gap-2 border-2 w-full">
+                      <Github className="w-4 h-4" />
+                      View Code
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -101,10 +105,12 @@ const Projects = () => {
         {/* More projects CTA */}
         <div className="text-center mt-12 animate-fade-in-up">
           <p className="text-muted-foreground mb-4">More projects coming soon...</p>
-          <Button variant="outline" className="gap-2 border-2">
-            <Github className="w-4 h-4" />
-            View GitHub Profile
-          </Button>
+          <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" className="gap-2 border-2">
+              <Github className="w-4 h-4" />
+              View GitHub Profile
+            </Button>
+          </a>
         </div>
       </div>
     </section>
