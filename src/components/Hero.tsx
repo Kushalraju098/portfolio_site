@@ -1,5 +1,6 @@
-import { ArrowRight, Download, Mail, User } from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
   return (
@@ -34,18 +35,24 @@ const Hero = () => {
             </p>
 
             <div className="animate-fade-in-up animate-delay-300 flex flex-wrap gap-4 mb-10">
-              <Button className="btn-gradient gap-2" size="lg">
-                <ArrowRight className="w-5 h-5" />
-                View Projects
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2 border-2 hover:bg-secondary">
-                <Download className="w-5 h-5" />
-                Download Resume
-              </Button>
-              <Button variant="ghost" size="lg" className="gap-2 hover:bg-primary/10 hover:text-primary">
-                <Mail className="w-5 h-5" />
-                Contact Me
-              </Button>
+              <a href="#projects">
+                <Button className="btn-gradient gap-2" size="lg">
+                  <ArrowRight className="w-5 h-5" />
+                  View Projects
+                </Button>
+              </a>
+              <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
+                <Button variant="outline" size="lg" className="gap-2 border-2 hover:bg-secondary">
+                  <Download className="w-5 h-5" />
+                  Download Resume
+                </Button>
+              </a>
+              <a href="#contact">
+                <Button variant="ghost" size="lg" className="gap-2 hover:bg-primary/10 hover:text-primary">
+                  <Mail className="w-5 h-5" />
+                  Contact Me
+                </Button>
+              </a>
             </div>
 
             {/* Stats */}
@@ -72,11 +79,13 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full border-4 border-primary/20 scale-110" />
               <div className="absolute inset-0 rounded-full border-4 border-accent/20 scale-125 rotate-45" />
               
-              {/* Profile placeholder */}
-              <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex flex-col items-center justify-center border-4 border-card shadow-2xl">
-                <User className="w-24 h-24 text-muted-foreground/50 mb-4" />
-                <span className="text-muted-foreground font-medium">Add Image</span>
-                <span className="text-sm text-muted-foreground/70">(Later)</span>
+              {/* Profile Image */}
+              <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-card shadow-2xl">
+                <img 
+                  src={profilePhoto} 
+                  alt="Kushal Pathapati" 
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
 
               {/* Floating badge */}

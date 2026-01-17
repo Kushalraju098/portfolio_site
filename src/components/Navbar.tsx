@@ -43,10 +43,12 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="btn-gradient gap-2">
-              <Download className="w-4 h-4" />
-              Download CV
-            </Button>
+            <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
+              <Button className="btn-gradient gap-2">
+                <Download className="w-4 h-4" />
+                Download CV
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,10 +74,12 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button className="btn-gradient gap-2 w-full mt-2">
-                <Download className="w-4 h-4" />
-                Download CV
-              </Button>
+              <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
+                <Button className="btn-gradient gap-2 w-full mt-2">
+                  <Download className="w-4 h-4" />
+                  Download CV
+                </Button>
+              </a>
             </div>
           </div>
         )}
