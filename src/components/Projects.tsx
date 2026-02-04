@@ -1,11 +1,27 @@
-import { ExternalLink, Github, BarChart2, Shield } from "lucide-react";
+import { ExternalLink, Github, BarChart2, Shield, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import cybercrimeGraph1 from "@/assets/cybercrime-graph1.jpg";
+import cybercrimeGraph2 from "@/assets/cybercrime-graph2.jpg";
+import cybercrimeGraph3 from "@/assets/cybercrime-graph3.jpg";
+
+const projectImages = [
+  { src: cybercrimeGraph1, alt: "Total Cybercrime & Year-over-Year % Change (2015-2024)" },
+  { src: cybercrimeGraph2, alt: "Trends in 5 Major Cybercrime Types (2015-2024)" },
+  { src: cybercrimeGraph3, alt: "Cybercrime Incidents and % Share by Province" },
+];
 
 const projects = [
   {
     title: "Cybercrime Analysis Dashboard",
     description: "An exploratory analytics project analyzing cybercrime trends across Canada. Includes preprocessing, visualization, and reporting of trend patterns and year-over-year insights using Power BI and Python.",
-    image: "📊",
     tools: ["Python", "Power BI", "Data Cleaning", "Data Visualization"],
     icon: Shield,
     color: "from-primary to-accent",
@@ -38,18 +54,29 @@ const Projects = () => {
               className="group relative rounded-3xl bg-background border border-border overflow-hidden card-hover animate-fade-in-up"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Project Image/Visual */}
-              <div className={`relative h-64 bg-gradient-to-br ${project.color} flex items-center justify-center overflow-hidden`}>
-                <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-                <div className="relative">
-                  <div className="w-32 h-32 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-6xl shadow-2xl">
-                    {project.image}
-                  </div>
-                </div>
+              {/* Project Image Carousel */}
+              <div className="relative bg-muted">
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {projectImages.map((image, imgIndex) => (
+                      <CarouselItem key={imgIndex}>
+                        <div className="relative aspect-video w-full overflow-hidden bg-white">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2 bg-background/80 hover:bg-background" />
+                  <CarouselNext className="right-2 bg-background/80 hover:bg-background" />
+                </Carousel>
                 
                 {/* Floating icon */}
-                <div className="absolute top-6 right-6 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <project.icon className="w-6 h-6 text-white" />
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-primary/90 backdrop-blur-sm flex items-center justify-center z-10">
+                  <project.icon className="w-5 h-5 text-primary-foreground" />
                 </div>
               </div>
 
