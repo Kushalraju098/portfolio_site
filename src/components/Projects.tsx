@@ -12,7 +12,9 @@ import {
   Dialog,
   DialogContent,
   DialogClose,
+  DialogTitle,
 } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 import cybercrimeGraph1 from "@/assets/cybercrime-graph1.jpg";
 import cybercrimeGraph2 from "@/assets/cybercrime-graph2.jpg";
@@ -172,7 +174,12 @@ const Projects = () => {
 
       {/* Image Lightbox Modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-background/95 backdrop-blur-sm border-0">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-background/95 backdrop-blur-sm border-0" aria-describedby={undefined}>
+          <VisuallyHidden>
+            <DialogTitle>
+              {selectedImage?.alt || "Image preview"}
+            </DialogTitle>
+          </VisuallyHidden>
           <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/90 transition-colors">
             <X className="h-5 w-5" />
             <span className="sr-only">Close</span>
