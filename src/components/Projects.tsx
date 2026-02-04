@@ -65,50 +65,43 @@ const Projects = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Project Image Carousel */}
-              <div className={`relative p-6 bg-gradient-to-br ${project.color}`}>
-                <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-                
+              <div className="relative">
                 {/* Floating icon */}
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center z-10">
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-primary/90 backdrop-blur-sm flex items-center justify-center z-10">
                   <project.icon className="w-5 h-5 text-white" />
                 </div>
 
-                <Carousel className="w-full max-w-2xl mx-auto">
+                <Carousel className="w-full">
                   <CarouselContent>
                     {projectImages.map((image, imgIndex) => (
                       <CarouselItem key={imgIndex}>
-                        <div className="p-2">
-                          <div 
-                            className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white cursor-pointer group/image transition-transform hover:scale-[1.02]"
-                            onClick={() => setSelectedImage(image)}
-                          >
-                            <img
-                              src={image.src}
-                              alt={image.alt}
-                              className="w-full h-48 sm:h-56 object-contain"
-                            />
-                            {/* Zoom overlay on hover */}
-                            <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/20 transition-colors flex items-center justify-center">
-                              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover/image:opacity-100 transition-opacity" />
-                            </div>
+                        <div 
+                          className="relative overflow-hidden bg-white cursor-pointer group/image"
+                          onClick={() => setSelectedImage(image)}
+                        >
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-64 sm:h-80 md:h-96 object-cover object-center"
+                          />
+                          {/* Zoom overlay on hover */}
+                          <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/30 transition-colors flex items-center justify-center">
+                            <ZoomIn className="w-10 h-10 text-white opacity-0 group-hover/image:opacity-100 transition-opacity drop-shadow-lg" />
                           </div>
-                          <p className="text-center text-white/90 text-sm mt-3 font-medium">
-                            {image.alt}
-                          </p>
+                          {/* Caption overlay */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <p className="text-white text-sm font-medium text-center">
+                              {image.alt}
+                            </p>
+                          </div>
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="left-0 sm:-left-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
-                  <CarouselNext className="right-0 sm:-right-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
+                  <CarouselPrevious className="left-2 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
+                  <CarouselNext className="right-2 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
                 </Carousel>
 
-                {/* Carousel dots indicator */}
-                <div className="flex justify-center gap-2 mt-4">
-                  {projectImages.map((_, idx) => (
-                    <div key={idx} className="w-2 h-2 rounded-full bg-white/40" />
-                  ))}
-                </div>
               </div>
 
               {/* Content */}
