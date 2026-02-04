@@ -1,4 +1,5 @@
-import { ExternalLink, Github, BarChart2, Shield, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { ExternalLink, Github, BarChart2, Shield, X, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -7,6 +8,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 import cybercrimeGraph1 from "@/assets/cybercrime-graph1.jpg";
 import cybercrimeGraph2 from "@/assets/cybercrime-graph2.jpg";
@@ -30,6 +36,8 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
   return (
     <section id="projects" className="section-padding bg-card">
       <div className="section-container">
@@ -68,12 +76,19 @@ const Projects = () => {
                     {projectImages.map((image, imgIndex) => (
                       <CarouselItem key={imgIndex}>
                         <div className="p-2">
-                          <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
+                          <div 
+                            className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white cursor-pointer group/image transition-transform hover:scale-[1.02]"
+                            onClick={() => setSelectedImage(image)}
+                          >
                             <img
                               src={image.src}
                               alt={image.alt}
                               className="w-full h-48 sm:h-56 object-contain"
                             />
+                            {/* Zoom overlay on hover */}
+                            <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/20 transition-colors flex items-center justify-center">
+                              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover/image:opacity-100 transition-opacity" />
+                            </div>
                           </div>
                           <p className="text-center text-white/90 text-sm mt-3 font-medium">
                             {image.alt}
@@ -154,6 +169,28 @@ const Projects = () => {
           </a>
         </div>
       </div>
+
+      {/* Image Lightbox Modal */}
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-background/95 backdrop-blur-sm border-0">
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/90 transition-colors">
+            <X className="h-5 w-5" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+          {selectedImage && (
+            <div className="p-4">
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              />
+              <p className="text-center text-foreground font-medium mt-4 text-lg">
+                {selectedImage.alt}
+              </p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
