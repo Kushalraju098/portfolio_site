@@ -55,28 +55,42 @@ const Projects = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Project Image Carousel */}
-              <div className="relative bg-muted">
-                <Carousel className="w-full">
+              <div className={`relative p-6 bg-gradient-to-br ${project.color}`}>
+                <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+                
+                {/* Floating icon */}
+                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center z-10">
+                  <project.icon className="w-5 h-5 text-white" />
+                </div>
+
+                <Carousel className="w-full max-w-2xl mx-auto">
                   <CarouselContent>
                     {projectImages.map((image, imgIndex) => (
                       <CarouselItem key={imgIndex}>
-                        <div className="relative aspect-video w-full overflow-hidden bg-white">
-                          <img
-                            src={image.src}
-                            alt={image.alt}
-                            className="w-full h-full object-contain"
-                          />
+                        <div className="p-2">
+                          <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-full h-48 sm:h-56 object-contain"
+                            />
+                          </div>
+                          <p className="text-center text-white/90 text-sm mt-3 font-medium">
+                            {image.alt}
+                          </p>
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="left-2 bg-background/80 hover:bg-background" />
-                  <CarouselNext className="right-2 bg-background/80 hover:bg-background" />
+                  <CarouselPrevious className="left-0 sm:-left-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
+                  <CarouselNext className="right-0 sm:-right-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
                 </Carousel>
-                
-                {/* Floating icon */}
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-primary/90 backdrop-blur-sm flex items-center justify-center z-10">
-                  <project.icon className="w-5 h-5 text-primary-foreground" />
+
+                {/* Carousel dots indicator */}
+                <div className="flex justify-center gap-2 mt-4">
+                  {projectImages.map((_, idx) => (
+                    <div key={idx} className="w-2 h-2 rounded-full bg-white/40" />
+                  ))}
                 </div>
               </div>
 
