@@ -1,84 +1,90 @@
-import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Certifications", href: "#certifications" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "#about", num: "01" },
+  { name: "Skills", href: "#skills", num: "02" },
+  { name: "Work", href: "#projects", num: "03" },
+  { name: "Contact", href: "#contact", num: "04" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        scrolled ? "bg-background/70 backdrop-blur-xl border-b border-border" : ""
+      }`}
+    >
       <div className="section-container">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">KP</span>
+        <div className="flex items-center justify-between h-20">
+          <a href="#home" className="flex items-center gap-3 group">
+            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm display-font">KP</span>
             </div>
-            <span className="font-bold text-lg text-foreground hidden sm:block">
-              Kushal Pathapati
+            <span className="display-font font-medium text-foreground hidden sm:block tracking-tight">
+              Kushal<span className="text-primary">.</span>
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-primary font-medium transition-colors duration-200"
+                className="group flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {link.name}
+                <span className="text-primary text-xs">{link.num}</span>
+                <span className="link-underline">{link.name}</span>
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
-              <Button className="btn-gradient gap-2">
-                <Download className="w-4 h-4" />
-                Download CV
-              </Button>
-            </a>
-          </div>
+          <a
+            href="/resume.pdf"
+            download="Kushal_Pathapati_Resume.pdf"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all text-sm display-font"
+          >
+            Resume
+          </a>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+            className="md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in-up">
+          <div className="md:hidden py-6 border-t border-border">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary font-medium py-2 transition-colors"
                   onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 text-lg display-font"
                 >
+                  <span className="text-primary text-sm">{link.num}</span>
                   {link.name}
                 </a>
               ))}
-              <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
-                <Button className="btn-gradient gap-2 w-full mt-2">
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </Button>
+              <a
+                href="/resume.pdf"
+                download="Kushal_Pathapati_Resume.pdf"
+                className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full border border-border display-font"
+              >
+                Resume
               </a>
             </div>
           </div>

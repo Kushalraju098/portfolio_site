@@ -1,109 +1,102 @@
-import { ArrowRight, Download, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import HeroScene from "./HeroScene";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const Hero = () => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-line", {
+        y: 120,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        stagger: 0.12,
+        delay: 0.2,
+      });
+      gsap.from(".hero-meta", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.08,
+        delay: 1.1,
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Background Shapes */}
-      <div className="floating-shape w-96 h-96 bg-primary/20 -top-20 -right-20" />
-      <div className="floating-shape w-72 h-72 bg-accent/20 bottom-20 -left-20" style={{ animationDelay: "2s" }} />
-      <div className="floating-shape w-48 h-48 bg-cyan/20 top-1/2 right-1/4" style={{ animationDelay: "4s" }} />
+    <section
+      id="home"
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24"
+    >
+      {/* Glow */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-50"
+        style={{ background: "var(--gradient-glow)" }}
+      />
+
+      {/* 3D scene background */}
+      <div className="absolute right-0 top-0 w-full lg:w-[60%] h-full opacity-90 pointer-events-none">
+        <HeroScene />
+      </div>
 
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div className="order-2 lg:order-1">
-            <div className="animate-fade-in-up">
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-                👋 Welcome to my Portfolio
-              </span>
-            </div>
+        <div className="hero-meta flex items-center gap-3 mb-8 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          Available for opportunities — Toronto, CA
+        </div>
 
-            <h1 className="animate-fade-in-up animate-delay-100 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Hello, I'm{" "}
-              <span className="gradient-text">Kushal Pathapati</span>
-              <br />
-              <span className="text-foreground">Data Analyst</span>
-            </h1>
-
-            <p className="animate-fade-in-up animate-delay-200 text-lg text-muted-foreground mb-8 max-w-xl">
-              Aspiring Data Analyst with experience in SQL, Python, R, Power BI, and Excel. 
-              Skilled in transforming raw data into actionable insights, validating data workflows, 
-              and supporting analytical decision-making with a strong foundation in software testing 
-              and cross-functional collaboration.
-            </p>
-
-            <div className="animate-fade-in-up animate-delay-300 flex flex-wrap gap-4 mb-10">
-              <a href="#projects">
-                <Button className="btn-gradient gap-2" size="lg">
-                  <ArrowRight className="w-5 h-5" />
-                  View Projects
-                </Button>
-              </a>
-              <a href="/resume.pdf" download="Kushal_Pathapati_Resume.pdf">
-                <Button variant="outline" size="lg" className="gap-2 border-2 hover:bg-secondary">
-                  <Download className="w-5 h-5" />
-                  Download Resume
-                </Button>
-              </a>
-              <a href="#contact">
-                <Button variant="ghost" size="lg" className="gap-2 hover:bg-primary/10 hover:text-primary">
-                  <Mail className="w-5 h-5" />
-                  Contact Me
-                </Button>
-              </a>
-            </div>
-
-            {/* Stats */}
-            <div className="animate-fade-in-up animate-delay-400 flex gap-8 pt-6 border-t border-border">
-              <div>
-                <div className="text-3xl font-bold gradient-text">3+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold gradient-text">2</div>
-                <div className="text-sm text-muted-foreground">Certifications</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold gradient-text">5+</div>
-                <div className="text-sm text-muted-foreground">Projects Completed</div>
-              </div>
+        <h1 className="display-font font-medium text-[14vw] md:text-[9vw] lg:text-[8rem] leading-[0.95] tracking-tighter">
+          <div className="overflow-hidden">
+            <div className="hero-line">Data —</div>
+          </div>
+          <div className="overflow-hidden">
+            <div className="hero-line">
+              <span className="serif-italic font-normal text-primary">driven</span> stories
             </div>
           </div>
+          <div className="overflow-hidden">
+            <div className="hero-line text-muted-foreground">that decide.</div>
+          </div>
+        </h1>
 
-          {/* Profile Image Placeholder */}
-          <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative animate-fade-in-up">
-              {/* Decorative ring */}
-              <div className="absolute inset-0 rounded-full border-4 border-primary/20 scale-110" />
-              <div className="absolute inset-0 rounded-full border-4 border-accent/20 scale-125 rotate-45" />
-              
-              {/* Profile Image */}
-              <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-card shadow-2xl">
-                <img 
-                  src={profilePhoto} 
-                  alt="Kushal Pathapati" 
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
+        <div className="mt-12 grid md:grid-cols-2 gap-8 items-end">
+          <p className="hero-meta max-w-md text-muted-foreground leading-relaxed">
+            I'm <span className="text-foreground">Kushal Pathapati</span> — a data analyst
+            blending 3+ years of QA precision with SQL, Python, R and Power BI to turn raw
+            datasets into decisions teams actually ship.
+          </p>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-card rounded-2xl px-6 py-4 shadow-xl border border-border">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <span className="text-2xl">📊</span>
-                  </div>
-                  <div>
-                    <div className="font-bold text-foreground">Data Analytics</div>
-                    <div className="text-sm text-muted-foreground">Specialist</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="hero-meta flex flex-wrap gap-4 md:justify-end">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary text-primary-foreground display-font hover:bg-primary/90 transition-colors"
+            >
+              See selected work
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border display-font hover:bg-secondary transition-colors"
+            >
+              Get in touch
+            </a>
           </div>
         </div>
       </div>
+
+      <a
+        href="#about"
+        className="hero-meta absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground"
+      >
+        Scroll
+        <ArrowDown className="w-4 h-4 animate-bounce" />
+      </a>
     </section>
   );
 };
