@@ -1,57 +1,31 @@
 import { useState } from "react";
-import { Mail, Phone, Linkedin, Send, MapPin, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useReveal } from "@/hooks/useReveal";
 import emailjs from "@emailjs/browser";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "kushalraju098@gmail.com",
-    href: "mailto:kushalraju098@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "(647) 960-1929",
-    href: "tel:+16479601929",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/kushalpathapati",
-    href: "https://linkedin.com/in/kushalpathapati",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Toronto, Canada",
-    href: "#",
-  },
+const socials = [
+  { label: "Email", value: "kushalraju098@gmail.com", href: "mailto:kushalraju098@gmail.com" },
+  { label: "Phone", value: "(647) 960-1929", href: "tel:+16479601929" },
+  { label: "LinkedIn", value: "in/kushalpathapati", href: "https://linkedin.com/in/kushalpathapati" },
+  { label: "GitHub", value: "Kushalraju098", href: "https://github.com/Kushalraju098" },
 ];
 
-// EmailJS configuration
 const EMAILJS_SERVICE_ID = "service_q53h2bd";
 const EMAILJS_TEMPLATE_ID = "template_r67ae8a";
 const EMAILJS_PUBLIC_KEY = "y_xSGZb4oiDgAI720";
 
 const Contact = () => {
+  const ref = useReveal<HTMLElement>();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
@@ -65,149 +39,139 @@ const Contact = () => {
         },
         EMAILJS_PUBLIC_KEY
       );
-
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
+      toast({ title: "Message sent", description: "Thanks — I'll be in touch shortly." });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("EmailJS error:", error);
-      toast({
-        title: "Error Sending Message",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-      });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Couldn't send", description: "Please email me directly.", variant: "destructive" });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-card via-background to-navy" />
-      
+    <section id="contact" ref={ref} className="section-padding relative overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none opacity-40"
+        style={{ background: "var(--gradient-glow)" }}
+      />
+
       <div className="section-container relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-            GET IN TOUCH
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Let's <span className="gradient-text">Connect</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Interested in connecting or hiring? I'd love to hear from you.
-          </p>
+        <div className="flex items-center gap-4 mb-16" data-reveal>
+          <span className="text-primary text-sm display-font">04 —</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Contact</span>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Info */}
-          <div className="animate-fade-in-up animate-delay-100">
-            <h3 className="font-bold text-2xl mb-6">Contact Information</h3>
-            <p className="text-muted-foreground mb-8">
-              Feel free to reach out through any of these channels. I'm always open to discussing 
-              new opportunities, data analytics projects, or just having a friendly chat.
+        <h2
+          className="display-font text-5xl md:text-8xl tracking-tighter leading-[0.95] mb-16 max-w-4xl"
+          data-reveal
+        >
+          Let's build something{" "}
+          <span className="serif-italic text-primary">worth measuring.</span>
+        </h2>
+
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          <div className="lg:col-span-5 space-y-10" data-reveal>
+            <p className="text-muted-foreground leading-relaxed text-lg max-w-md">
+              Hiring, collaborating, or just curious about a dataset?
+              I read every message.
             </p>
 
-            <div className="space-y-6">
-              {contactInfo.map((item) => (
+            <div className="space-y-px bg-border border border-border rounded-2xl overflow-hidden">
+              {socials.map((s) => (
                 <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300"
+                  key={s.label}
+                  href={s.href}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="group flex items-center justify-between bg-background hover:bg-card p-5 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <item.icon className="w-6 h-6" />
-                  </div>
                   <div>
-                    <div className="text-sm text-muted-foreground">{item.label}</div>
-                    <div className="font-medium text-foreground group-hover:text-primary transition-colors">
-                      {item.value}
-                    </div>
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground">{s.label}</div>
+                    <div className="display-font mt-1">{s.value}</div>
                   </div>
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:rotate-45 transition-all duration-300" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="animate-fade-in-up animate-delay-200">
-            <form onSubmit={handleSubmit} className="space-y-6 p-8 rounded-2xl bg-card border border-border">
-              <h3 className="font-bold text-2xl mb-2">Send a Message</h3>
-              <p className="text-muted-foreground text-sm mb-6">
-                Fill out the form below and I'll get back to you as soon as possible.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Name</label>
-                  <Input
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    disabled={isLoading}
-                    className="bg-background"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    disabled={isLoading}
-                    className="bg-background"
-                  />
-                </div>
-              </div>
-
+          <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-6" data-reveal>
+            <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Subject</label>
+                <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                  Name
+                </label>
                 <Input
-                  placeholder="What's this about?"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                   disabled={isLoading}
-                  className="bg-background"
+                  placeholder="Your name"
+                  className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary text-lg h-12"
                 />
               </div>
-
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
-                <Textarea
-                  placeholder="Your message..."
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                  Email
+                </label>
+                <Input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   disabled={isLoading}
-                  className="bg-background resize-none"
+                  placeholder="you@domain.com"
+                  className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary text-lg h-12"
                 />
               </div>
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                Subject
+              </label>
+              <Input
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                required
+                disabled={isLoading}
+                placeholder="What's it about?"
+                className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary text-lg h-12"
+              />
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                Message
+              </label>
+              <Textarea
+                rows={5}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+                disabled={isLoading}
+                placeholder="Tell me a little..."
+                className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-primary text-lg resize-none"
+              />
+            </div>
 
-              <Button type="submit" className="btn-gradient w-full gap-2" size="lg" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground display-font hover:bg-primary/90 transition-colors disabled:opacity-60"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" /> Sending
+                </>
+              ) : (
+                <>
+                  Send message
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
+                </>
+              )}
+            </button>
+          </form>
         </div>
       </div>
     </section>

@@ -1,101 +1,63 @@
-import { Award, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import { useReveal } from "@/hooks/useReveal";
 
 const certifications = [
   {
     title: "Azure Data Fundamentals",
     code: "DP-900",
     issuer: "Microsoft",
-    description: "Foundational knowledge of core data concepts and Azure data services including relational, non-relational, and analytics workloads.",
-    color: "from-primary to-accent",
-    badge: "☁️",
-    verifyUrl: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/6ef7e3420ba11230",
+    description:
+      "Core data concepts, relational & non-relational data, and analytics workloads on Azure.",
+    verifyUrl:
+      "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/6ef7e3420ba11230",
   },
   {
     title: "Azure AI Fundamentals",
     code: "AI-900",
     issuer: "Microsoft",
-    description: "Core concepts related to artificial intelligence and machine learning workloads on Microsoft Azure.",
-    color: "from-accent to-cyan",
-    badge: "🤖",
-    verifyUrl: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/b2426d4d0678c506",
+    description:
+      "Foundational AI & ML workloads on Microsoft Azure — vision, language, and responsible AI.",
+    verifyUrl:
+      "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/b2426d4d0678c506",
   },
 ];
 
 const Certifications = () => {
+  const ref = useReveal<HTMLElement>();
+
   return (
-    <section id="certifications" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-card via-background to-card" />
-      
-      <div className="section-container relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-            CREDENTIALS
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Professional <span className="gradient-text">Certifications</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Industry-recognized certifications validating my technical expertise
-          </p>
+    <section id="certifications" ref={ref} className="section-padding bg-card/30 border-y border-border">
+      <div className="section-container">
+        <div className="flex items-center gap-4 mb-16" data-reveal>
+          <span className="text-primary text-sm display-font">—</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Credentials</span>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
-        {/* Certifications Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {certifications.map((cert, index) => (
-            <div
+        <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-2xl overflow-hidden">
+          {certifications.map((cert) => (
+            <a
               key={cert.code}
-              className="group relative p-8 rounded-2xl bg-card border border-border card-hover animate-fade-in-up"
-              style={{ animationDelay: `${index * 150}ms` }}
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-background p-10 hover:bg-card transition-colors block"
+              data-reveal
             >
-              {/* Gradient border effect */}
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-              
-              <div className="relative">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${cert.color} flex items-center justify-center text-3xl shadow-lg`}>
-                    {cert.badge}
+              <div className="flex items-start justify-between mb-8">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-primary mb-2">
+                    {cert.code} · {cert.issuer}
                   </div>
-                  <div className="flex items-center gap-2 text-primary">
-                    <Award className="w-5 h-5" />
-                    <span className="font-bold text-sm">Certified</span>
-                  </div>
+                  <h3 className="display-font text-3xl tracking-tight">{cert.title}</h3>
                 </div>
-
-                {/* Content */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                      {cert.code}
-                    </span>
-                    <span className="text-muted-foreground text-sm">{cert.issuer}</span>
-                  </div>
-                  <h3 className="font-bold text-xl mb-3">{cert.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {cert.description}
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <a
-                  href={cert.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
-                >
-                  <Button
-                    variant="outline"
-                    className="w-full gap-2 border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Verify Certificate
-                  </Button>
-                </a>
+                <ArrowUpRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:rotate-45 transition-all duration-300" />
               </div>
-            </div>
+              <p className="text-muted-foreground leading-relaxed mb-8">{cert.description}</p>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground link-underline">
+                Verify credential
+              </div>
+            </a>
           ))}
         </div>
       </div>
