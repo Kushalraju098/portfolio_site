@@ -1,98 +1,84 @@
-import { Database, Code, BarChart3, Users, CheckCircle } from "lucide-react";
+import Marquee from "react-fast-marquee";
+import { useReveal } from "@/hooks/useReveal";
 
-const skillCategories = [
-  {
-    title: "Programming",
-    icon: Code,
-    color: "from-primary to-accent",
-    skills: ["SQL (MySQL)", "Python", "R"],
-  },
-  {
-    title: "Data Tools",
-    icon: BarChart3,
-    color: "from-accent to-cyan",
-    skills: ["Power BI", "Excel (VLOOKUP, Pivot Tables)", "Data Visualization"],
-  },
-  {
-    title: "Analysis",
-    icon: Database,
-    color: "from-cyan to-primary",
-    skills: ["Statistical Analysis", "Predictive Modeling", "Data Cleaning", "ETL Processes"],
-  },
-  {
-    title: "Collaboration",
-    icon: Users,
-    color: "from-primary to-accent",
-    skills: ["Jira", "Agile Methodology", "Git/GitHub", "Cross-functional Teams"],
-  },
-  {
-    title: "Quality & Testing",
-    icon: CheckCircle,
-    color: "from-accent to-cyan",
-    skills: ["SDLC", "STLC", "Automation Concepts", "Data Validation"],
-  },
+const skillGroups = [
+  { title: "Languages", items: ["SQL / MySQL", "Python", "R", "DAX"] },
+  { title: "Visualization", items: ["Power BI", "Excel", "Matplotlib", "Seaborn"] },
+  { title: "Analysis", items: ["Statistical Analysis", "Predictive Modeling", "ETL", "Data Cleaning"] },
+  { title: "Workflow", items: ["Git / GitHub", "Jira", "Agile", "Cross-functional"] },
+  { title: "Quality", items: ["SDLC", "STLC", "Automation", "Data Validation"] },
+];
+
+const marqueeItems = [
+  "SQL", "Python", "R", "Power BI", "Excel", "Azure", "Git", "Jira",
+  "Statistics", "ETL", "Data Modeling", "Dashboards", "Predictive Modeling",
+  "Data Cleaning", "Agile", "Data Storytelling",
 ];
 
 const Skills = () => {
+  const ref = useReveal<HTMLElement>();
+
   return (
-    <section id="skills" className="section-padding bg-card">
+    <section id="skills" ref={ref} className="section-padding relative">
       <div className="section-container">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-            MY EXPERTISE
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Technical <span className="gradient-text">Skills</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A comprehensive toolkit for transforming data into insights
-          </p>
+        <div className="flex items-center gap-4 mb-16" data-reveal>
+          <span className="text-primary text-sm display-font">02 —</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Toolkit</span>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={category.title}
-              className="group relative p-8 rounded-2xl bg-background border border-border card-hover animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Gradient accent */}
-              <div className={`absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-gradient-to-r ${category.color}`} />
-              
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center`}>
-                  <category.icon className="w-7 h-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-bold text-xl">{category.title}</h3>
-              </div>
+        <h2
+          className="display-font text-4xl md:text-6xl tracking-tight mb-16 max-w-3xl"
+          data-reveal
+        >
+          Tools I reach for when{" "}
+          <span className="serif-italic text-primary">the deadline is real.</span>
+        </h2>
 
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="skill-badge group-hover:bg-primary/10 group-hover:text-primary transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border rounded-2xl overflow-hidden mb-20">
+          {skillGroups.map((group, i) => (
+            <div
+              key={group.title}
+              className="bg-background p-8 hover:bg-card transition-colors group"
+              data-reveal
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="w-2 h-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
               </div>
+              <h3 className="display-font text-2xl mb-6">{group.title}</h3>
+              <ul className="space-y-2">
+                {group.items.map((s) => (
+                  <li key={s} className="text-muted-foreground group-hover:text-foreground transition-colors">
+                    {s}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
-        </div>
-
-        {/* Additional Skills Bar */}
-        <div className="mt-16 p-8 rounded-2xl bg-background border border-border animate-fade-in-up">
-          <h3 className="font-bold text-lg mb-6 text-center">Also Proficient In</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Conditional Formatting", "Business Reporting", "Data Storytelling", "Dashboard Design", "API Integration", "Database Management"].map((skill) => (
-              <span key={skill} className="px-4 py-2 rounded-lg bg-secondary text-foreground font-medium text-sm">
-                {skill}
-              </span>
-            ))}
+          <div className="bg-primary text-primary-foreground p-8 flex flex-col justify-between" data-reveal>
+            <span className="text-xs uppercase tracking-widest opacity-70">+ more</span>
+            <h3 className="display-font text-2xl mt-6">
+              Always learning. Currently exploring{" "}
+              <span className="serif-italic">advanced ML & cloud analytics.</span>
+            </h3>
           </div>
         </div>
+      </div>
+
+      <div className="marquee-fade py-6 border-y border-border bg-card/30">
+        <Marquee speed={45} gradient={false} pauseOnHover>
+          {marqueeItems.concat(marqueeItems).map((item, i) => (
+            <div key={i} className="flex items-center gap-12 px-8">
+              <span className="display-font text-3xl md:text-5xl text-foreground/40 hover:text-primary transition-colors">
+                {item}
+              </span>
+              <span className="text-primary text-2xl">✦</span>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </section>
   );
