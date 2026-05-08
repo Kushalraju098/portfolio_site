@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { ExternalLink, Github, BarChart2, Shield, X, ZoomIn } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, Github, X } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -8,179 +7,155 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogClose,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogClose, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useReveal } from "@/hooks/useReveal";
 
 import cybercrimeGraph1 from "@/assets/cybercrime-graph1.jpg";
 import cybercrimeGraph2 from "@/assets/cybercrime-graph2.jpg";
 import cybercrimeGraph3 from "@/assets/cybercrime-graph3.jpg";
 
 const projectImages = [
-  { src: cybercrimeGraph1, alt: "Total Cybercrime & Year-over-Year % Change (2015-2024)" },
-  { src: cybercrimeGraph2, alt: "Trends in 5 Major Cybercrime Types (2015-2024)" },
-  { src: cybercrimeGraph3, alt: "Cybercrime Incidents and % Share by Province" },
+  { src: cybercrimeGraph1, alt: "Total cybercrime & YoY % change (2015–2024)" },
+  { src: cybercrimeGraph2, alt: "Trends across 5 major cybercrime types" },
+  { src: cybercrimeGraph3, alt: "Cybercrime incidents & % share by province" },
 ];
 
 const projects = [
   {
+    num: "01",
     title: "Cybercrime Analysis Dashboard",
-    description: "An exploratory analytics project analyzing cybercrime trends across Canada. Includes preprocessing, visualization, and reporting of trend patterns and year-over-year insights using Power BI and Python.",
-    tools: ["Python", "Power BI", "Data Cleaning", "Data Visualization"],
-    icon: Shield,
-    color: "from-primary to-accent",
-    highlights: ["Dynamic Dashboards", "Trend Analysis", "YoY Insights"],
+    year: "2024",
+    role: "Data Analysis · Visualization",
+    description:
+      "Exploratory analytics on Canadian cybercrime trends — preprocessing, visualization, and YoY reporting in Power BI and Python.",
+    tools: ["Python", "Power BI", "Pandas", "Data Cleaning"],
+    images: projectImages,
+    link: "https://github.com/Kushalraju098",
   },
 ];
 
 const Projects = () => {
+  const ref = useReveal<HTMLElement>();
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
   return (
-    <section id="projects" className="section-padding bg-card">
+    <section id="projects" ref={ref} className="section-padding relative">
       <div className="section-container">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-            PORTFOLIO
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real-world data analytics projects showcasing my technical skills
-          </p>
+        <div className="flex items-center gap-4 mb-16" data-reveal>
+          <span className="text-primary text-sm display-font">03 —</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Selected work</span>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
-        {/* Projects Grid */}
-        <div className="max-w-4xl mx-auto">
-          {projects.map((project, index) => (
-            <div
-              key={project.title}
-              className="group relative rounded-3xl bg-background border border-border overflow-hidden card-hover animate-fade-in-up"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              {/* Project Image Carousel */}
-              <div className={`relative p-6 bg-gradient-to-br ${project.color}`}>
-                <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-                
-                {/* Floating icon */}
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center z-10">
-                  <project.icon className="w-5 h-5 text-white" />
-                </div>
+        <h2
+          className="display-font text-4xl md:text-6xl tracking-tight mb-20 max-w-3xl"
+          data-reveal
+        >
+          A few things I've built{" "}
+          <span className="serif-italic text-primary">recently.</span>
+        </h2>
 
-                <Carousel className="w-full max-w-2xl mx-auto">
+        <div className="space-y-24">
+          {projects.map((project) => (
+            <article key={project.title} className="grid lg:grid-cols-12 gap-8 lg:gap-12" data-reveal>
+              <div className="lg:col-span-5 space-y-6">
+                <div className="flex items-baseline gap-4">
+                  <span className="display-font text-primary text-2xl">{project.num}</span>
+                  <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                    {project.year} · {project.role}
+                  </span>
+                </div>
+                <h3 className="display-font text-3xl md:text-5xl tracking-tight leading-[1.05]">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tools.map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1.5 rounded-full border border-border text-xs uppercase tracking-wider text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-6 pt-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 display-font link-underline"
+                  >
+                    Visit project
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:rotate-45" />
+                  </a>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </a>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7">
+                <Carousel className="w-full">
                   <CarouselContent>
-                    {projectImages.map((image, imgIndex) => (
-                      <CarouselItem key={imgIndex}>
-                        <div className="p-2">
-                          <div 
-                            className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white cursor-pointer group/image transition-transform hover:scale-[1.02]"
-                            onClick={() => setSelectedImage(image)}
-                          >
+                    {project.images.map((image, idx) => (
+                      <CarouselItem key={idx}>
+                        <button
+                          onClick={() => setSelectedImage(image)}
+                          className="relative w-full rounded-2xl overflow-hidden border border-border bg-card group block"
+                        >
+                          <div className="aspect-[4/3] overflow-hidden">
                             <img
                               src={image.src}
                               alt={image.alt}
-                              className="w-full h-48 sm:h-56 object-contain"
+                              className="w-full h-full object-contain bg-white p-4 transition-transform duration-700 group-hover:scale-105"
                             />
-                            {/* Zoom overlay on hover */}
-                            <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/20 transition-colors flex items-center justify-center">
-                              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover/image:opacity-100 transition-opacity" />
-                            </div>
                           </div>
-                          <p className="text-center text-white/90 text-sm mt-3 font-medium">
-                            {image.alt}
-                          </p>
-                        </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/90 to-transparent flex items-center justify-between">
+                            <span className="text-xs uppercase tracking-widest text-foreground">
+                              {String(idx + 1).padStart(2, "0")} / {String(project.images.length).padStart(2, "0")}
+                            </span>
+                            <span className="text-xs text-muted-foreground">{image.alt}</span>
+                          </div>
+                        </button>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="left-0 sm:-left-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
-                  <CarouselNext className="right-0 sm:-right-4 bg-white/90 hover:bg-white text-primary border-0 shadow-lg" />
+                  <CarouselPrevious className="left-4 bg-background/80 border-border" />
+                  <CarouselNext className="right-4 bg-background/80 border-border" />
                 </Carousel>
-
-                {/* Carousel dots indicator */}
-                <div className="flex justify-center gap-2 mt-4">
-                  {projectImages.map((_, idx) => (
-                    <div key={idx} className="w-2 h-2 rounded-full bg-white/40" />
-                  ))}
-                </div>
               </div>
-
-              {/* Content */}
-              <div className="p-8">
-                <h3 className="font-bold text-2xl mb-4">{project.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.highlights.map((highlight) => (
-                    <span
-                      key={highlight}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium"
-                    >
-                      <BarChart2 className="w-3 h-3" />
-                      {highlight}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Tools */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tools.map((tool) => (
-                    <span key={tool} className="skill-badge text-sm">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="flex gap-4">
-                  <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer" className="flex-1">
-                    <Button className="btn-gradient gap-2 w-full">
-                      <ExternalLink className="w-4 h-4" />
-                      View Project
-                    </Button>
-                  </a>
-                  <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer" className="flex-1">
-                    <Button variant="outline" className="gap-2 border-2 w-full">
-                      <Github className="w-4 h-4" />
-                      View Code
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* More projects CTA */}
-        <div className="text-center mt-12 animate-fade-in-up">
-          <p className="text-muted-foreground mb-4">More projects coming soon...</p>
-          <a href="https://github.com/Kushalraju098" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" className="gap-2 border-2">
-              <Github className="w-4 h-4" />
-              View GitHub Profile
-            </Button>
+        <div className="mt-24 text-center" data-reveal>
+          <a
+            href="https://github.com/Kushalraju098"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-border display-font hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+          >
+            <Github className="w-4 h-4" />
+            More on GitHub
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </div>
 
-      {/* Image Lightbox Modal */}
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-background/95 backdrop-blur-sm border-0" aria-describedby={undefined}>
+        <DialogContent className="max-w-5xl w-[95vw] p-0 bg-background border-border" aria-describedby={undefined}>
           <VisuallyHidden>
-            <DialogTitle>
-              {selectedImage?.alt || "Image preview"}
-            </DialogTitle>
+            <DialogTitle>{selectedImage?.alt || "Image preview"}</DialogTitle>
           </VisuallyHidden>
-          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/90 transition-colors">
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-primary p-2 text-primary-foreground hover:scale-110 transition-transform">
             <X className="h-5 w-5" />
             <span className="sr-only">Close</span>
           </DialogClose>
@@ -189,9 +164,9 @@ const Projects = () => {
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                className="w-full h-auto max-h-[80vh] object-contain rounded-lg bg-white"
               />
-              <p className="text-center text-foreground font-medium mt-4 text-lg">
+              <p className="text-center text-muted-foreground mt-4 text-sm uppercase tracking-widest">
                 {selectedImage.alt}
               </p>
             </div>

@@ -6,10 +6,12 @@ import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Cursor from "@/components/Cursor";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background grain">
+      <Cursor />
       <Navbar />
       <Hero />
       <About />

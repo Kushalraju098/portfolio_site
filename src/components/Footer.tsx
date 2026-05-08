@@ -1,50 +1,47 @@
-import { Heart, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-navy py-12">
+    <footer className="border-t border-border py-12 mt-12">
       <div className="section-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo & Copyright */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">KP</span>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div>
+            <div className="display-font text-2xl tracking-tight">
+              Kushal Pathapati<span className="text-primary">.</span>
             </div>
-            <div>
-              <div className="font-bold text-navy-foreground">Kushal Pathapati</div>
-              <div className="text-sm text-navy-foreground/70">Data Analyst</div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
+              Data Analyst · Toronto
             </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
               href="https://linkedin.com/in/kushalpathapati"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-navy-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href="https://github.com/Kushalraju098"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-navy-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
             </a>
             <a
               href="mailto:kushalraju098@gmail.com"
-              className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-navy-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Copyright */}
-          <div className="flex items-center gap-1 text-sm text-navy-foreground/70">
-            Made with <Heart className="w-4 h-4 text-red-400" /> © {new Date().getFullYear()}
+          <div className="text-xs uppercase tracking-widest text-muted-foreground">
+            © {year} — Built with care
           </div>
         </div>
       </div>
