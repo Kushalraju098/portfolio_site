@@ -26,30 +26,30 @@ const Certifications = () => {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section id="certifications" ref={ref} className="section-padding bg-card/30 border-y border-border">
+    <section id="certifications" ref={ref} className="section-padding bg-secondary/40 border-y border-border">
       <div className="section-container">
         <div className="flex items-center gap-4 mb-16" data-reveal>
-          <span className="text-primary text-sm display-font">—</span>
+          <span className="text-primary text-sm display-font font-semibold">—</span>
           <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Credentials</span>
           <div className="flex-1 h-px bg-border" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border rounded-2xl overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-5">
           {certifications.map((cert) => (
             <a
               key={cert.code}
               href={cert.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-background p-10 hover:bg-card transition-colors block"
+              className="card-hover group bg-card border border-border rounded-2xl p-10 block"
               data-reveal
             >
               <div className="flex items-start justify-between mb-8">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-primary mb-2">
+                  <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
                     {cert.code} · {cert.issuer}
                   </div>
-                  <h3 className="display-font text-3xl tracking-tight">{cert.title}</h3>
+                  <h3 className="display-font text-3xl font-semibold tracking-tight">{cert.title}</h3>
                 </div>
                 <ArrowUpRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:rotate-45 transition-all duration-300" />
               </div>
