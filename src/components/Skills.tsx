@@ -35,20 +35,20 @@ const Skills = () => {
           <span className="serif-italic text-primary">the deadline is real.</span>
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border rounded-2xl overflow-hidden mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
           {skillGroups.map((group, i) => (
             <div
               key={group.title}
-              className="bg-background p-8 hover:bg-card transition-colors group"
+              className="card-hover bg-card border border-border rounded-2xl p-8 group"
               data-reveal
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="w-2 h-2 rounded-full bg-primary group-hover:scale-150 transition-transform" />
               </div>
-              <h3 className="display-font text-2xl mb-6">{group.title}</h3>
+              <h3 className="display-font text-2xl font-semibold mb-6">{group.title}</h3>
               <ul className="space-y-2">
                 {group.items.map((s) => (
                   <li key={s} className="text-muted-foreground group-hover:text-foreground transition-colors">
@@ -58,21 +58,25 @@ const Skills = () => {
               </ul>
             </div>
           ))}
-          <div className="bg-primary text-primary-foreground p-8 flex flex-col justify-between" data-reveal>
-            <span className="text-xs uppercase tracking-widest opacity-70">+ more</span>
-            <h3 className="display-font text-2xl mt-6">
+          <div
+            className="rounded-2xl p-8 flex flex-col justify-between text-primary-foreground shadow-[var(--shadow-lg)]"
+            style={{ background: "var(--gradient-primary)" }}
+            data-reveal
+          >
+            <span className="text-xs uppercase tracking-widest opacity-80">+ more</span>
+            <h3 className="display-font text-2xl font-semibold mt-6">
               Always learning. Currently exploring{" "}
-              <span className="serif-italic">advanced ML & cloud analytics.</span>
+              <span className="serif-italic font-normal">advanced ML & cloud analytics.</span>
             </h3>
           </div>
         </div>
       </div>
 
-      <div className="marquee-fade py-6 border-y border-border bg-card/30">
+      <div className="marquee-fade py-6 border-y border-border bg-secondary/40">
         <Marquee speed={45} gradient={false} pauseOnHover>
           {marqueeItems.concat(marqueeItems).map((item, i) => (
             <div key={i} className="flex items-center gap-12 px-8">
-              <span className="display-font text-3xl md:text-5xl text-foreground/40 hover:text-primary transition-colors">
+              <span className="display-font text-3xl md:text-5xl font-semibold text-foreground/30 hover:text-primary transition-colors">
                 {item}
               </span>
               <span className="text-primary text-2xl">✦</span>
