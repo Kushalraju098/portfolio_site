@@ -20,18 +20,23 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled ? "bg-background/70 backdrop-blur-xl border-b border-border" : ""
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-20">
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
+        <div className="flex items-center justify-between h-16">
+          <a href="#home" className="flex items-center gap-2.5 group">
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center shadow-sm"
+              style={{ background: "var(--gradient-primary)" }}
+            >
               <span className="text-primary-foreground font-bold text-sm display-font">KP</span>
             </div>
-            <span className="display-font font-medium text-foreground hidden sm:block tracking-tight">
-              Kushal<span className="text-primary">.</span>
+            <span className="display-font font-semibold text-foreground hidden sm:block tracking-tight">
+              Kushal Pathapati
             </span>
           </a>
 
@@ -51,7 +56,7 @@ const Navbar = () => {
           <a
             href="/resume.pdf"
             download="Kushal_Pathapati_Resume.pdf"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all text-sm display-font"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground hover:opacity-90 hover:-translate-y-0.5 transition-all text-sm display-font font-medium shadow-sm"
           >
             Resume
           </a>
