@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useReveal } from "@/hooks/useReveal";
 import emailjs from "@emailjs/browser";
+import { z } from "zod";
 
 const socials = [
   { label: "Email", value: "kushalraju098@gmail.com", href: "mailto:kushalraju098@gmail.com" },
@@ -17,6 +18,13 @@ const EMAILJS_SERVICE_ID = "service_q53h2bd";
 const EMAILJS_TEMPLATE_ID = "template_r67ae8a";
 const EMAILJS_PUBLIC_KEY = "y_xSGZb4oiDgAI720";
 
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email too long"),
+  subject: z.string().trim().min(1, "Subject is required").max(150, "Subject must be under 150 characters"),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be under 2000 characters"),
+});
+
 const Contact = () => {
   const ref = useReveal<HTMLElement>();
   const { toast } = useToast();
@@ -25,16 +33,27 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      toast({
+        title: "Please check your input",
+        description: result.error.issues[0]?.message ?? "Invalid input",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsLoading(true);
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
+          from_name: result.data.name,
+          from_email: result.data.email,
+          subject: result.data.subject,
+          message: result.data.message,
           to_name: "Kushal Pathapati",
         },
         EMAILJS_PUBLIC_KEY
@@ -42,7 +61,6 @@ const Contact = () => {
       toast({ title: "Message sent", description: "Thanks — I'll be in touch shortly." });
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      console.error(err);
       toast({ title: "Couldn't send", description: "Please email me directly.", variant: "destructive" });
     } finally {
       setIsLoading(false);
