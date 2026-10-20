@@ -94,9 +94,13 @@ const projects = [
 ];
 
 const skillGroups = [
-  { title: "AI & machine learning", detail: "RAG · LangGraph · LLM tools · MCP · embeddings · XGBoost · model evaluation" },
-  { title: "Data & business intelligence", detail: "Python · Pandas · SQL · R · Power BI · DAX · tidyverse · Excel" },
-  { title: "Engineering & delivery", detail: "FastAPI · Flask · REST APIs · Docker · Git · Pytest · Selenium · Jenkins" },
+  { title: "Programming & analytics", skills: ["Python", "SQL / MySQL", "R", "Pandas", "NumPy", "Statistics", "Data cleaning", "EDA", "Excel", "Power BI", "DAX", "Power Query", "tidyverse", "ggplot2", "IBM Cognos Analytics", "SAS Viya", "SPSS"], evidence: ["Python", "SQL / MySQL", "R", "Pandas", "Data cleaning", "EDA", "Excel", "Power BI", "DAX", "tidyverse", "ggplot2"] },
+  { title: "Machine learning", skills: ["scikit-learn", "Regression", "Classification", "Decision Trees", "Random Forest", "XGBoost", "KNN", "Naive Bayes", "K-Means", "PCA", "Model evaluation", "Cross-validation"], evidence: ["XGBoost", "Classification", "Model evaluation"] },
+  { title: "Deep learning & NLP", skills: ["TensorFlow", "Keras", "CNN", "RNN", "LSTM", "Text preprocessing", "TF-IDF", "Bag of Words", "Word2Vec", "Sentiment analysis", "NER", "NLTK", "spaCy", "Text clustering", "Sentence Transformers"], evidence: ["Sentence Transformers"] },
+  { title: "Generative AI", skills: ["RAG", "Embeddings", "Vector retrieval", "LangChain", "LangGraph", "LlamaIndex", "Hugging Face", "AI agents", "Tool calling", "MCP", "Prompt engineering", "LLM evaluation", "Guardrails"], evidence: ["RAG", "Embeddings", "Vector retrieval", "LangChain", "LangGraph", "MCP", "Prompt engineering", "LLM evaluation", "Guardrails"] },
+  { title: "Backend & integrations", skills: ["FastAPI", "Flask", "REST APIs", "Pydantic", "External API integration", "Request validation"], evidence: ["FastAPI", "Flask", "REST APIs", "Pydantic", "External API integration", "Request validation"] },
+  { title: "Automation & software quality", skills: ["Selenium", "Pytest", "Robot Framework", "Jenkins", "Git", "GitHub", "Jira", "Agile / Scrum", "CI/CD"], evidence: ["Selenium", "Pytest", "Robot Framework", "Jenkins", "Git", "GitHub", "Jira", "Agile / Scrum", "CI/CD"] },
+  { title: "Cloud & infrastructure", skills: ["Microsoft Azure", "Google Cloud Platform", "Docker", "Databricks", "Cloud Run", "Artifact Registry", "Secret Manager"], evidence: ["Google Cloud Platform", "Docker", "Cloud Run"] },
 ];
 
 const experience = [
@@ -263,7 +267,7 @@ export default function Index() {
               <div className="role-pills" aria-label="Target roles"><span>AI / ML Engineer</span><span>Data Analyst</span></div>
               <div className="hero-actions"><a className="button button-dark" href="#projects">Explore my work <ArrowDown size={16} aria-hidden="true" /></a><a className="button button-outline" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15} aria-hidden="true" /></a><a className="resume-link" href="#contact">Contact me <ArrowRight size={15} aria-hidden="true" /></a></div>
             </div>
-            <div className="hero-profile"><img src={profilePhoto} alt="Kushal Pathapati" fetchPriority="high" /><div className="profile-caption"><MapPin size={14} aria-hidden="true" /> TORONTO, ONTARIO</div><div className="profile-note"><span>MY FOCUS</span><strong>Applied AI &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Data</strong></div></div>
+            <figure className="hero-profile"><img src={profilePhoto} alt="Kushal Pathapati" fetchPriority="high" /><figcaption className="profile-caption"><span className="profile-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario</span><span className="profile-note-label">FOCUS AREAS</span><span className="profile-focus">Applied AI <i>·</i> Machine learning <i>·</i> Data analytics</span></figcaption></figure>
           </div>
         </section>
 
@@ -272,8 +276,8 @@ export default function Index() {
         </section>
 
         <section className="skills section-pad" id="skills" aria-labelledby="skills-title">
-          <div className="section-heading"><div><p className="eyebrow">CORE TOOLKIT</p><h2 id="skills-title">What I use to <span>get the work done.</span></h2></div><p>Focused on the tools supported by my project and work experience.</p></div>
-          <div className="skills-grid">{skillGroups.map((group, i) => <article className="skill-card" key={group.title}><div className="skill-index">0{i + 1}</div><h3>{group.title}</h3><p>{group.detail}</p></article>)}</div>
+          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">A broad toolkit, <span>clearly grouped.</span></h2></div><p>Blue tags appear in my projects or work; the remaining tags represent my broader toolkit and study.</p></div>
+          <div className="skills-grid">{skillGroups.map((group, i) => <article className="skill-card" key={group.title}><div className="skill-card-heading"><span className="skill-index">0{i + 1}</span><h3>{group.title}</h3></div><ul className="skill-tags" aria-label={group.title + " skills"}>{group.skills.map((skill) => <li className={group.evidence.includes(skill) ? "skill-tag is-evidenced" : "skill-tag"} key={skill}>{skill}</li>)}</ul></article>)}</div>
         </section>
 
         <section className="projects-section section-pad" id="projects" aria-labelledby="projects-title">
