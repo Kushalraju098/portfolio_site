@@ -33,12 +33,6 @@ const projects = [
     branchOne: "RAG: query analysis → embeddings → Pinecone filing retrieval",
     branchTwo: "MCP: stock price · historical prices · company news",
     flowEnd: "Evidence synthesis → output grounding checks → answer",
-    implementation: [
-      { level: "IMPLEMENTED", title: "Application workflow", detail: "FastAPI /chat, Pydantic request validation, LangGraph RAG/MCP routing, Pinecone retrieval, market-data MCP tools, input checks and output grounding evaluation are present in source." },
-      { level: "PARTIAL", title: "SEC ingestion and evaluation", detail: "A filing HTML loader, ingestion notebook, sample filings and evaluation dataset/script are present. The runtime relies on a populated Pinecone index; no scheduled refresh or aggregate evaluation score is published." },
-      { level: "DOCUMENTED, NOT LIVE-VERIFIED", title: "Cloud Run deployment", detail: "The README documents separate Cloud Run services and links the API docs. Current endpoint availability was not confirmed during this rebuild." },
-      { level: "NEXT, NOT IMPLEMENTED", title: "Further verification", detail: "Automated filing refresh, a repeatable scored evaluation report and an independent live deployment check remain future work." },
-    ],
   },
   {
     slug: "aisle-analytics", number: "02", title: "Aisle Analytics",
@@ -185,7 +179,6 @@ function ProjectCaseStudy({ project, index }: { project: (typeof projects)[numbe
           <div className="aside-block"><h4>What I learned</h4><p>{project.learning}</p></div>
         </aside>
       </div>
-      {project.implementation && <section className="implementation-block" aria-label="Implementation status"><div className="implementation-heading"><p className="eyebrow">IMPLEMENTATION STATUS</p><h4>What the repository supports</h4></div><div className="implementation-grid">{project.implementation.map((item) => <article className="implementation-item" key={item.title}><span>{item.level}</span><h5>{item.title}</h5><p>{item.detail}</p></article>)}</div></section>}
       <div className="workflow-block">
         <div className="workflow-heading"><div><p className="eyebrow">SYSTEM VIEW</p><h4>{index === 0 ? "Evidence-first research flow" : index === 1 ? "From order history to store action" : "From source tables to insight"}</h4></div><span>Based on repository implementation</span></div>
         <div className="flow-line">{project.flow.map((step, i) => <span className="flow-step" key={step}>{i > 0 && <ArrowRight size={15} aria-hidden="true" />}{step}</span>)}</div>
