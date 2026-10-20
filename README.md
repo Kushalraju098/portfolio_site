@@ -37,4 +37,4 @@ npm run test
 npm run build
 ```
 
-The site is a single-page Vite application. The current production URL is used as the canonical URL in page metadata and `public/sitemap.xml`.
+The site is a single-page Vite application. The current portfolio URL, https://kushalpathapati.vercel.app/, is used as the canonical URL in page metadata and `public/sitemap.xml`.
