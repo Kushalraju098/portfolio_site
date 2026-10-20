@@ -202,11 +202,11 @@ img { display: block; max-width: 100%; }
 .education-note, .credential-note { color: #77849a; font-size: .63rem; line-height: 1.55; }
 .certifications-section { background: #eef2f8; }
 .credential-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
-.credential { min-height: 96px; display: flex; align-items: center; gap: 1rem; padding: .9rem 1rem; border: 1px solid #dbe2ec; border-radius: 6px; background: white; transition: border-color .16s ease, box-shadow .16s ease; }
+.credential { min-height: 112px; display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem; border: 1px solid #dbe2ec; border-radius: 8px; background: white; transition: border-color .16s ease, box-shadow .16s ease; }
 .credential:hover { border-color: #bac9eb; box-shadow: 0 8px 22px rgb(23 34 56 / 7%); }
-.credential-mark { width: 56px; height: 56px; flex: 0 0 56px; display: grid; place-items: center; border: 1px solid #e5e9ef; border-radius: 5px; background: #fafbfc; }
-.microsoft-cert-badge { width: 48px; height: 48px; object-fit: contain; }
-.datacamp-logomark { width: 23px; height: 31px; object-fit: contain; }
+.credential-mark { width: 78px; height: 78px; flex: 0 0 78px; display: grid; place-items: center; border: 1px solid #dce4f2; border-radius: 8px; background: #f7f9fe; box-shadow: inset 0 0 0 3px #fff; }
+.microsoft-cert-badge { width: 68px; height: 68px; object-fit: contain; }
+.datacamp-logomark { width: 34px; height: 43px; object-fit: contain; }
 .credential-details { min-width: 0; flex: 1; }
 .credential-provider { display: block; margin-bottom: .17rem; color: #536a9e; font-size: .61rem; }
 .credential-provider b { padding: 0 .15rem; color: #9aa5b7; }
@@ -298,9 +298,10 @@ img { display: block; max-width: 100%; }
   .job { grid-template-columns: 1fr; gap: .45rem; padding: 1.15rem 0; }
   .education-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
   .credential-list { grid-template-columns: 1fr; gap: .6rem; }
-  .credential { min-height: 84px; padding: .7rem; gap: .7rem; }
-  .credential-mark { width: 48px; height: 48px; flex-basis: 48px; }
-  .microsoft-cert-badge { width: 42px; height: 42px; }
+  .credential { min-height: 96px; padding: .75rem; gap: .7rem; }
+  .credential-mark { width: 62px; height: 62px; flex-basis: 62px; }
+  .microsoft-cert-badge { width: 54px; height: 54px; }
+  .datacamp-logomark { width: 28px; height: 36px; }
   .site-footer { grid-template-columns: 1fr auto; padding: 1rem 1.25rem; }
   .site-footer > span:nth-child(2) { display: none; }
 }
