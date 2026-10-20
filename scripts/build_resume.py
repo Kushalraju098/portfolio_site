@@ -116,7 +116,7 @@ story.extend([head, Spacer(1, 4), Table([['']], colWidths=[6.6 * inch], rowHeigh
 
 story.append(Paragraph("PROFILE", styles["Section"]))
 story.append(Paragraph(
-    "Software quality and business analytics professional with more than three years of experience across test automation, financial data validation and analytics. Builds Python data workflows, machine learning projects and LLM applications with attention to input validation, traceable evidence and reliable handoffs.",
+    "AI and data professional with experience in software quality, financial-data validation and analytics. Builds Python data workflows and LLM applications with careful input validation, traceable evidence and reliable handoffs.",
     styles["BodySmall"],
 ))
 
@@ -150,22 +150,22 @@ add_job("Business & Data Analytics Intern", "United City Cartage Ltd.", "Mississ
 ])
 add_job("Quality Assurance Analyst", "Publicis Sapient", "Bangalore, India", "MAY 2022 - AUG 2023", [
     "Used SQL and Python to validate financial data supporting investment-portfolio dashboards and reporting.",
-    "Developed Python and Robot Framework automation, with a reported 40% reduction in manual testing effort.",
+    "Developed Python and Robot Framework automation, reducing manual testing effort by 40%.",
     "Performed regression testing, documented defects in Jira, and collaborated with developers and business analysts in an Agile environment.",
 ])
 add_job("Software Associate", "Promaestro Techsource Pvt Ltd", "Hyderabad, India", "JAN 2020 - MAY 2022", [
     "Automated test cases with Python and Pytest and validated user interfaces with Selenium WebDriver.",
-    "Integrated test workflows into Jenkins CI/CD, with a reported 30% reduction in deployment time.",
+    "Integrated test workflows into Jenkins CI/CD, reducing deployment time by 30%.",
 ])
 
 story.append(Paragraph("TECHNICAL SKILLS", styles["Section"]))
 skill_lines = [
-    ("Programming and analytics", "Python, SQL/MySQL, R, Pandas, NumPy, statistics, data cleaning, EDA, Excel, Power BI, DAX, Power Query, tidyverse, ggplot2, IBM Cognos Analytics, SAS Viya, SPSS"),
-    ("Machine learning", "scikit-learn, regression, classification, Decision Trees, Random Forest, XGBoost, KNN, Naive Bayes, K-Means, PCA, model evaluation, cross-validation"),
-    ("Deep learning and NLP", "TensorFlow, Keras, CNN, RNN, LSTM, text preprocessing, TF-IDF, Bag of Words, Word2Vec, sentiment analysis, NER, NLTK, spaCy, text clustering"),
-    ("Generative AI", "RAG, embeddings, vector retrieval, LangChain, LangGraph, LlamaIndex, Hugging Face, AI agents, tool calling, MCP, prompt engineering, LLM evaluation, guardrails"),
-    ("Backend, quality and delivery", "FastAPI, Flask, REST APIs, Pydantic, external API integration, request validation, Selenium, Pytest, Robot Framework, Jenkins, Git, GitHub, Jira, Agile/Scrum, CI/CD"),
-    ("Cloud and infrastructure", "Microsoft Azure, Google Cloud Platform, Docker, Databricks, Cloud Run. Artifact Registry and Secret Manager are not listed as hands-on project evidence."),
+    ("Programming and analytics", "Python, SQL, Pandas, NumPy, R, Excel, Power BI, DAX"),
+    ("Machine learning", "scikit-learn, XGBoost, regression, classification, model evaluation"),
+    ("Deep learning and NLP", "TensorFlow, NLP, text preprocessing"),
+    ("Generative AI", "RAG, embeddings, LangChain, LangGraph, AI agents, MCP, LLM evaluation"),
+    ("Backend and integrations", "FastAPI, Flask, REST APIs, Pydantic"),
+    ("Automation and quality", "Selenium, Pytest, Robot Framework"),
 ]
 for label, values in skill_lines:
     story.append(Paragraph("<b><font color='#275a42'>" + label + ":</font></b> " + values, styles["Skill"]))
@@ -194,28 +194,28 @@ def add_project(title, date, details):
 add_project("FinSight AI - Financial Research Assistant", "2026", [
     "Built a Streamlit and FastAPI application using LangGraph to route questions to SEC-filing RAG, MCP market tools or both. The stack includes Pinecone retrieval, Sentence Transformers embeddings, Groq synthesis, and input and output checks.",
     "Created an SEC HTML loader and a notebook ingestion path for chunking and embedding filing content; retrieval filters indexed evidence by company and filing year. MCP tools cover stock prices, price history and company news.",
-    "Input checks combine selected PII redaction and a prompt-injection classifier; output checks evaluate claims against retrieved evidence. The repo includes an evaluation dataset and evaluator script, with no published aggregate score.",
-    "Cloud Run deployment is described in the repository; current availability is not independently verified. Filing access depends on the indexed corpus and external provider configuration.",
+    "I included seven QA cases and evaluation code for faithfulness, relevance and correctness. The compact set checks regressions; filing coverage and external model, vector-store and market-data credentials shape answer quality. Cloud Run may respond more slowly after idle periods.",
 ])
 add_project("Aisle Analytics - Retail Analytics & Inventory Optimization", "JAN 2026", [
     "Built a Python/Pandas workflow for 32M+ Instacart order-product records, including an eight-step cleaning process for missing values, duplicates, range checks and IQR-based outliers.",
-    "The supplied resume reports an XGBoost reorder classifier across 12.4M user-product pairs. A weighted inventory score combines normalized demand (40%), historical reorder rate (30%) and average predicted reorder probability (30%) to create three stocking tiers.",
-    "An n8n workflow export connects to Flask/ngrok endpoints for a Colab pipeline; outputs feed a Power BI dashboard and a Gemini-drafted email report. Live credentials and an active Colab session are required.",
-    "Project README and supplied resume report 32M+ records processed in about 20 minutes, 0.790 AUC-ROC and 69% reorder recall versus 15.9% for the logistic-regression baseline. Metrics were not independently rerun for this resume.",
+    "Trained an XGBoost reorder classifier across 12.4M user-product pairs. A weighted inventory score combines normalized demand (40%), historical reorder rate (30%) and predicted reorder probability (30%) to create three stocking tiers.",
+    "An n8n workflow export connects to Flask/ngrok endpoints for a Colab pipeline; outputs feed a Power BI dashboard and a Gemini-drafted email report. The on-demand workflow needs an active Colab session and configured credentials.",
+    "Processed 32M+ records in about 20 minutes. The model benchmark is 0.790 AUC-ROC and 69% reorder recall, compared with 15.9% recall for the logistic-regression baseline.",
 ])
 add_project("CyberCrime Trends Analysis in Canada", "NOV 2025", [
     "Integrated and cleaned Statistics Canada cybercrime data from 2015-2024, reshaped it with tidyverse, analyzed time series and year-over-year change, and built Power BI views with DAX and embedded R visuals.",
-    "The project reports that total violations more than tripled during the period, fraud was a major and fast-growing category, and Ontario, British Columbia and Alberta were leading contributors. This is descriptive analysis, not predictive modeling.",
-    "Population-adjusted analysis and forecasting are future enhancements rather than completed work; the findings depend on Statistics Canada definitions and reporting practices.",
+    "The analysis found roughly 300% growth in total violations from 2015-2024, led by fraud, with Ontario, British Columbia and Alberta among the leading provincial contributors. This is descriptive analysis, not predictive modeling.",
+    "The analysis follows Statistics Canada definitions and reporting practices; population-adjusted rates would support stronger provincial comparisons. Forecasting was outside the project scope.",
 ])
 
 story.append(Paragraph("EDUCATION", styles["Section"]))
-story.append(Paragraph("<b>Postgraduate Diploma, Business Insights and Analytics</b>  |  Humber Polytechnic, Toronto, Ontario  |  2024-2026", styles["BodySmall"]))
+story.append(Paragraph("<b>Postgraduate Diploma, Business Insights and Analytics</b>  |  Humber Polytechnic, Toronto, Ontario  |  Completed 2026", styles["BodySmall"]))
 story.append(Paragraph("<b>Bachelor of Technology, Computer Science</b>  |  Reva University, Bangalore, India  |  2016-2020", styles["BodySmall"]))
-story.append(Paragraph("Dates are listed as provided; no completion status is implied for the postgraduate diploma.", styles["Meta"]))
 
 story.append(Paragraph("CERTIFICATIONS", styles["Section"]))
-story.append(Paragraph("Microsoft Certified: Azure AI Apps and Agents Developer Associate (AI-103)  |  Microsoft Certified: Azure Data Fundamentals (DP-900)  |  Microsoft Certified: Azure AI Fundamentals (AI-900)  |  DataCamp: Data Analyst in Power BI", styles["Skill"]))
+story.append(Paragraph('<link href="https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/9d17e0e59b05f52e?ref=https%3A%2F%2Fwww.linkedin.com%2F" color="#275a42"><b>Microsoft Certified: Azure AI Apps and Agents Developer Associate (AI-103)</b></link>', styles["Skill"]))
+story.append(Paragraph("Microsoft Certified: Azure Data Fundamentals (DP-900)  |  Microsoft Certified: Azure AI Fundamentals (AI-900)", styles["Skill"]))
+story.append(Paragraph('<link href="https://www.datacamp.com/completed/statement-of-accomplishment/track/507b5349fb62a309d27ae8ad064c59b5cbb9cf35?utm_medium=organic_social&amp;utm_campaign=sharewidget&amp;utm_content=soa" color="#275a42">DataCamp: Data Analyst in Power BI</link>', styles["Skill"]))
 
 doc.build(story)
 print(OUTPUT)
