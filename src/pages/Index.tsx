@@ -246,7 +246,7 @@ export default function Index() {
           <a className="brand" href="#home" onClick={closeMenu} aria-label="Kushal Pathapati, home"><span className="brand-mark">KP</span><span>Kushal Pathapati</span></a>
           <button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="primary-nav" aria-label={menuOpen ? "Close navigation" : "Open navigation"}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button>
           <div className={menuOpen ? "nav-links is-open" : "nav-links"} id="primary-nav">
-            {["Work", "About", "Skills", "Experience", "Education", "Contact"].map((item) => <a href={item === "Work" ? "#projects" : "#" + item.toLowerCase()} key={item} onClick={closeMenu}>{item}</a>)}
+            {["Work", "About", "Skills", "Experience", "Education", "Certifications", "Contact"].map((item) => <a href={item === "Work" ? "#projects" : "#" + item.toLowerCase()} key={item} onClick={closeMenu}>{item}</a>)}
             <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noreferrer">Resume <ArrowUpRight size={15} aria-hidden="true" /></a>
           </div>
         </nav>
@@ -294,9 +294,12 @@ export default function Index() {
         </section>
 
         <section className="education section-pad" id="education" aria-labelledby="education-title">
-          <div className="education-grid"><div><p className="eyebrow">EDUCATION</p><h2 id="education-title">Building a strong <span>foundation.</span></h2><div className="education-list">{education.map((item) => <article className="education-item" key={item.institution}><div><h3>{item.qualification}</h3><p>{item.institution} <span>·</span> {item.place}</p></div><span className="education-date">{item.dates}</span></article>)}</div><p className="education-note">Dates are listed as provided. No completion status is implied for the postgraduate diploma.</p></div>
-            <div className="credential-panel"><div className="credential-panel-heading"><p className="eyebrow">CERTIFICATIONS</p><h3>Credentials</h3><span className="credential-count">04 VERIFIED</span></div><div className="credential-list">{certifications.map((cert) => <article className="credential" key={cert.code}><div className="credential-mark" aria-hidden="true">{cert.provider === "Microsoft" ? <img className="microsoft-cert-badge" src={`/microsoft-certified-${cert.badge}-badge.svg`} alt="" /> : <img className="datacamp-logomark" src="/datacamp-logomark.svg" alt="" />}</div><div className="credential-details"><span className="credential-provider">{cert.provider} <b>·</b> {cert.code}</span><strong>{cert.title}</strong></div><a className="credential-link" href={cert.href} target="_blank" rel="noreferrer" aria-label={"View credential: " + cert.title}><ExternalLink size={16} aria-hidden="true" /></a></article>)}</div><p className="credential-note">Open each credential to view its verification page.</p></div>
-          </div>
+          <div className="education-grid"><div><p className="eyebrow">EDUCATION</p><h2 id="education-title">Building a strong <span>foundation.</span></h2><div className="education-list">{education.map((item) => <article className="education-item" key={item.institution}><div><h3>{item.qualification}</h3><p>{item.institution} <span>·</span> {item.place}</p></div><span className="education-date">{item.dates}</span></article>)}</div><p className="education-note">Dates are listed as provided. No completion status is implied for the postgraduate diploma.</p></div></div>
+        </section>
+
+        <section className="certifications-section section-pad" id="certifications" aria-labelledby="certifications-title">
+          <div className="section-heading"><div><p className="eyebrow">CERTIFICATIONS</p><h2 id="certifications-title">Credentials for <span>AI and data.</span></h2></div><p>Professional learning across Microsoft Azure AI, data fundamentals and Power BI.</p></div>
+          <div className="credential-list">{certifications.map((cert) => <article className="credential" key={cert.code}><div className="credential-mark" aria-hidden="true">{cert.provider === "Microsoft" ? <img className="microsoft-cert-badge" src={`/microsoft-certified-${cert.badge}-badge.svg`} alt="" /> : <img className="datacamp-logomark" src="/datacamp-logomark.svg" alt="" />}</div><div className="credential-details"><span className="credential-provider">{cert.provider} <b>·</b> {cert.code}</span><strong>{cert.title}</strong></div><a className="credential-link" href={cert.href} target="_blank" rel="noreferrer" aria-label={"View credential: " + cert.title}><ExternalLink size={16} aria-hidden="true" /></a></article>)}</div>
         </section>
 
         <section className="contact section-pad" id="contact" aria-labelledby="contact-title">
