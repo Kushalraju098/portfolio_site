@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+# Kushal Pathapati - Portfolio
 
-## Project info
+Responsive portfolio for applied AI engineering, LLM applications, analytics and automation. Built with React, TypeScript and Vite.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Run locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Contact form configuration
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The form preserves the existing EmailJS browser integration. Its service ID, template ID and **public client key** remain configured for the current service; optional Vite overrides are listed in `.env.example`.
 
-**Use GitHub Codespaces**
+```text
+VITE_EMAILJS_SERVICE_ID=
+VITE_EMAILJS_TEMPLATE_ID=
+VITE_EMAILJS_PUBLIC_KEY=
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+These EmailJS values are intended for browser use. The form reports a delivery error and offers the direct email address if sending fails. Do not put a private provider secret in a `VITE_` variable; Vite embeds those values in the browser bundle.
 
-## What technologies are used for this project?
+## Content evidence
 
-This project is built with:
+- **FinSight AI:** [source repository](https://github.com/Kushalraju098/FinSight_AI). This portfolio describes the code paths that are present in the repository. The API docs URL is documented by that repository; its current availability has not been verified here. No evaluation score is claimed.
+- **Aisle Analytics:** [source repository](https://github.com/Kushalraju098/AI-Powered-Retail-Analytics-and-Inventory-Optimization-System-using-N8n). Reported metrics are identified as reported project results and were not rerun for this rebuild. The dashboard PDF and workflow image are repository artifacts.
+- **CyberCrime Trends Analysis in Canada:** [source repository](https://github.com/Kushalraju098/cybercrime-analysis-canada). Findings are described as retrospective and descriptive, not predictive.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Experience, education and certification labels are based on information supplied for this rebuild. Education dates are shown without a completion claim. Credential verification links are included only where the existing portfolio had a link.
 
-## How can I deploy this project?
+## Build and checks
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```sh
+npm run lint
+npm run test
+npm run build
+```
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The site is a single-page Vite application. The current production URL is used as the canonical URL in page metadata and `public/sitemap.xml`.
