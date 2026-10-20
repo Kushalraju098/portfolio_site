@@ -396,7 +396,7 @@ body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; letter-spacing: -0.0
 .credential { justify-content: flex-start; min-height: 88px; padding: 0.9rem; border: 1px solid #e3e8f1; border-radius: 15px; background: #fff; transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
 .credential:hover { transform: translateY(-2px); border-color: #b9c7f4; box-shadow: 0 9px 22px rgb(40 53 94 / 0.07); }
 .credential-mark { display: grid; flex: 0 0 48px; place-items: center; width: 48px; height: 48px; border: 1px solid #e4e9f2; border-radius: 14px; background: #f8faff; }
-.microsoft-mark { display: block; width: 22px; height: 22px; }
+.microsoft-cert-badge { display: block; width: 39px; height: 39px; object-fit: contain; }
 .datacamp-logomark { width: 25px; height: 34px; object-fit: contain; }
 .credential-details { min-width: 0; flex: 1; }
 .credential-provider { display: block; margin-bottom: 0.3rem; color: #596bc5; font: 500 0.56rem var(--mono); letter-spacing: 0.035em; }
