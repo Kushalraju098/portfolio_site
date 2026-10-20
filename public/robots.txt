@@ -12,4 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
-Sitemap: https://portfoliosite-eosin-five.vercel.app/sitemap.xml
+Sitemap: https://kushalpathapati.vercel.app/sitemap.xml
