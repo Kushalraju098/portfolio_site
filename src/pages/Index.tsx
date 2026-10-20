@@ -136,10 +136,10 @@ const education = [
 ];
 
 const certifications = [
-  { title: "Microsoft Certified: Azure AI Apps and Agents Developer Associate", code: "AI-103" },
-  { title: "Microsoft Certified: Azure Data Fundamentals", code: "DP-900", href: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/6ef7e3420ba11230" },
-  { title: "Microsoft Certified: Azure AI Fundamentals", code: "AI-900", href: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/b2426d4d0678c506" },
-  { title: "DataCamp: Data Analyst in Power BI", code: "DATACAMP" },
+  { title: "Microsoft Certified: Azure AI Apps and Agents Developer Associate", code: "AI-103", provider: "Microsoft", href: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/9d17e0e59b05f52e?ref=https%3A%2F%2Fwww.linkedin.com%2F" },
+  { title: "Microsoft Certified: Azure Data Fundamentals", code: "DP-900", provider: "Microsoft", href: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/6ef7e3420ba11230" },
+  { title: "Microsoft Certified: Azure AI Fundamentals", code: "AI-900", provider: "Microsoft", href: "https://learn.microsoft.com/en-us/users/kushalpathapati/credentials/b2426d4d0678c506" },
+  { title: "Data Analyst in Power BI", code: "DATACAMP", provider: "DataCamp", href: "https://www.datacamp.com/completed/statement-of-accomplishment/track/507b5349fb62a309d27ae8ad064c59b5cbb9cf35?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa" },
 ];
 
 const contactSchema = z.object({
@@ -319,7 +319,7 @@ export default function Index() {
 
         <section className="education section-pad" id="education" aria-labelledby="education-title">
           <div className="education-grid"><div><div className="section-label"><span>05</span><span>EDUCATION</span><i /></div><h2 id="education-title">Learning that <em>keeps compounding.</em></h2><div className="education-list">{education.map((item) => <article className="education-item" key={item.institution}><div><h3>{item.qualification}</h3><p>{item.institution} <span>·</span> {item.place}</p></div><span className="education-date">{item.dates}</span></article>)}</div><p className="education-note">Dates are listed as provided. No completion status is implied for the postgraduate diploma.</p></div>
-            <div className="credential-panel"><p className="eyebrow">CERTIFICATIONS</p><h3>Credentials</h3><div className="credential-list">{certifications.map((cert) => <div className="credential" key={cert.code}><div><span>{cert.code}</span><strong>{cert.title}</strong></div>{cert.href ? <a href={cert.href} target="_blank" rel="noreferrer" aria-label={"Verify " + cert.title}><ExternalLink size={15} aria-hidden="true" /></a> : <span className="no-credential-link">Listed</span>}</div>)}</div><p className="credential-note">Verification links are included where one was available on the existing portfolio.</p></div>
+            <div className="credential-panel"><div className="credential-panel-heading"><p className="eyebrow">CERTIFICATIONS</p><h3>Credentials</h3><span className="credential-count">04 VERIFIED</span></div><div className="credential-list">{certifications.map((cert) => <article className="credential" key={cert.code}><div className="credential-mark" aria-hidden="true">{cert.provider === "Microsoft" ? <svg className="microsoft-mark" viewBox="0 0 24 24"><rect x="1" y="1" width="10" height="10" fill="#f25022" /><rect x="13" y="1" width="10" height="10" fill="#7fba00" /><rect x="1" y="13" width="10" height="10" fill="#00a4ef" /><rect x="13" y="13" width="10" height="10" fill="#ffb900" /></svg> : <span className="datacamp-mark">D</span>}</div><div className="credential-details"><span className="credential-provider">{cert.provider} <b>·</b> {cert.code}</span><strong>{cert.title}</strong></div><a className="credential-link" href={cert.href} target="_blank" rel="noreferrer" aria-label={"View credential: " + cert.title}><ExternalLink size={16} aria-hidden="true" /></a></article>)}</div><p className="credential-note">Open each credential to view its verification page.</p></div>
           </div>
         </section>
 
