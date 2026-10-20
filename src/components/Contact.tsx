@@ -14,9 +14,9 @@ const socials = [
   { label: "GitHub", value: "Kushalraju098", href: "https://github.com/Kushalraju098" },
 ];
 
-const EMAILJS_SERVICE_ID = "service_q53h2bd";
-const EMAILJS_TEMPLATE_ID = "template_r67ae8a";
-const EMAILJS_PUBLIC_KEY = "y_xSGZb4oiDgAI720";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
