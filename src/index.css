@@ -87,8 +87,7 @@ img { display: block; max-width: 100%; }
 .skill-card-heading { display: flex; align-items: center; gap: .65rem; }
 .skill-index { color: #8290a6; font: 600 .75rem var(--mono); }
 .skill-card h3 { margin: 0; font-size: var(--heading-card); line-height: 1.35; letter-spacing: -.025em; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; margin: .85rem 0 0; padding: 0; list-style: none; }
-.skill-tag { padding: .34rem .5rem; border: 1px solid #e0e6ee; border-radius: 4px; color: #5c6879; background: #f8f9fb; font-size: .76rem; line-height: 1.35; }
+.skill-list { margin: .7rem 0 0; color: #59677b; font-size: .81rem; line-height: 1.72; }
 .projects-section { background: #fff; }
 .projects-heading { margin-bottom: 2.1rem; }
 .project-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
@@ -267,7 +266,7 @@ img { display: block; max-width: 100%; }
   .section-heading h2, .education-grid h2, .contact-copy h2 { font-size: clamp(2.15rem, 9vw, 3.3rem); }
   .skills-grid { grid-template-columns: 1fr; gap: .65rem; }
   .skill-card { min-height: 0; padding: .95rem; }
-  .skill-tag { font-size: .75rem; }
+  .skill-list { font-size: .82rem; line-height: 1.68; }
   .project-cards { grid-template-columns: 1fr; }
   .project-cybercrime { grid-column: auto; display: flex; }
   .project-art { height: 175px; }
