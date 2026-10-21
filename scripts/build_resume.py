@@ -101,7 +101,7 @@ contact = Paragraph(
 )
 head = Table([
     [Paragraph("KUSHAL PATHAPATI", styles["Name"]), contact],
-    [Paragraph("APPLIED AI  |  LLM SYSTEMS  |  DATA ANALYTICS", styles["Headline"]), ""],
+    [Paragraph("AI/ML ENGINEERING  |  DATA SCIENCE  |  LLM SYSTEMS", styles["Headline"]), ""],
 ], colWidths=[4.55 * inch, 2.05 * inch])
 head.setStyle(TableStyle([
     ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -162,10 +162,10 @@ story.append(Paragraph("TECHNICAL SKILLS", styles["Section"]))
 skill_lines = [
     ("Programming and analytics", "Python, SQL, Pandas, NumPy, R, Excel, Power BI, DAX"),
     ("Machine learning", "scikit-learn, XGBoost, regression, classification, model evaluation"),
-    ("Deep learning and NLP", "TensorFlow, NLP, text preprocessing"),
+    ("Deep learning and NLP", "TensorFlow, neural networks, transformers, NLP, text preprocessing"),
     ("Generative AI", "RAG, embeddings, LangChain, LangGraph, AI agents, MCP, LLM evaluation"),
     ("Backend and integrations", "FastAPI, Flask, REST APIs, Pydantic"),
-    ("Automation and quality", "Selenium, Pytest, Robot Framework"),
+    ("Automation and quality", "Selenium"),
 ]
 for label, values in skill_lines:
     story.append(Paragraph("<b><font color='#275a42'>" + label + ":</font></b> " + values, styles["Skill"]))
