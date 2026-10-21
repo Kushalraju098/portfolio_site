@@ -20,8 +20,9 @@ const projects = [
     date: "2026", category: "APPLIED AI · LLM SYSTEMS",
     summary: "A financial research assistant that routes questions to indexed SEC filing evidence, market-data tools, or both, then checks the answer against the evidence it collected.",
     repo: "https://github.com/Kushalraju098/FinSight_AI",
-    demo: "https://finsight-backend-626144383400.northamerica-northeast2.run.app/docs",
-    demoLabel: "API docs · may take ~30s after idle",
+    demo: "https://finsight-ai-626144383400.northamerica-northeast2.run.app/",
+    demoLabel: "Open live app",
+    apiDocs: "https://finsight-backend-626144383400.northamerica-northeast2.run.app/docs",
     tags: ["Python", "FastAPI", "LangGraph", "RAG", "Pinecone", "MCP", "Streamlit", "Docker", "Google Cloud Run"],
     proof: ["7-case evaluation set", "RAG + MCP routing", "SEC filing corpus"],
     problem: "Financial research questions often mix historical filing facts with live market information. Using one source for both makes it easy to give a stale price or an unsupported filing claim.",
@@ -91,7 +92,7 @@ const projects = [
 const skillGroups = [
   { title: "Programming & analytics", skills: ["Python", "SQL", "Pandas", "NumPy", "R", "Excel", "Power BI", "DAX"] },
   { title: "Machine learning", skills: ["scikit-learn", "XGBoost", "Regression", "Classification", "Model evaluation"] },
-  { title: "Deep learning & NLP", skills: ["TensorFlow", "NLP", "Text preprocessing"] },
+  { title: "Deep learning & NLP", skills: ["TensorFlow", "Neural networks", "Transformers", "NLP", "Text preprocessing"] },
   { title: "Generative AI", skills: ["RAG", "Embeddings", "LangChain", "LangGraph", "AI agents", "MCP", "LLM evaluation"] },
   { title: "Backend & integrations", skills: ["FastAPI", "Flask", "REST APIs", "Pydantic"] },
   { title: "Automation & software quality", skills: ["Selenium", "Pytest", "Robot Framework"] },
@@ -156,6 +157,7 @@ function ProjectCaseStudy({ project, index }: { project: (typeof projects)[numbe
           <div className="case-links">
             <a href={project.repo} target="_blank" rel="noreferrer">Source <Github size={15} aria-hidden="true" /></a>
             {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">{project.demoLabel} <ExternalLink size={15} aria-hidden="true" /></a>}
+            {project.apiDocs && <a href={project.apiDocs} target="_blank" rel="noreferrer">API docs <ExternalLink size={15} aria-hidden="true" /></a>}
           </div>
         </div>
         <p className="case-summary">{project.summary}</p>
@@ -252,10 +254,10 @@ export default function Index() {
             <div className="hero-copy">
               <div className="availability"><span className="availability-dot" /> TORONTO, ON <span className="availability-sep">·</span> OPEN TO OPPORTUNITIES</div>
               <h1 id="hero-title">AI and data,<br /><span>built with a QA mindset.</span></h1>
-              <p className="hero-lede">I build practical LLM and analytics applications with the testing discipline I developed in financial-data validation and software quality. I’m open to AI/ML engineering and data roles.</p>
+              <p className="hero-lede">I build practical LLM and analytics applications with the testing discipline I developed in financial-data validation and software quality. I’m open to AI/ML engineering and data scientist roles.</p>
               <div className="hero-actions"><a className="button button-dark" href="#projects">Explore my work <ArrowDown size={16} aria-hidden="true" /></a><a className="button button-outline" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15} aria-hidden="true" /></a></div>
             </div>
-            <figure className="hero-profile"><img src={profilePhoto} alt="Kushal Pathapati" fetchPriority="high" /><figcaption className="profile-caption"><span className="profile-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario</span><span className="profile-note-label">FOCUS AREAS</span><span className="profile-focus">Applied AI <i>·</i> Machine learning <i>·</i> Data analytics</span></figcaption></figure>
+            <figure className="hero-profile"><img src={profilePhoto} alt="Kushal Pathapati" fetchPriority="high" /><figcaption className="profile-caption"><span className="profile-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario</span><span className="profile-note-label">FOCUS AREAS</span><span className="profile-focus">AI/ML Engineering <i>·</i> Data Scientist</span></figcaption></figure>
           </div>
         </section>
 
@@ -282,7 +284,7 @@ export default function Index() {
         </section>
 
         <section className="skills section-pad" id="skills" aria-labelledby="skills-title">
-          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">A focused toolkit for <span>AI and data work.</span></h2></div><p>Thirty skills across programming, machine learning, deep learning, generative AI, backend development and software quality.</p></div>
+          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">A focused toolkit for <span>AI and data work.</span></h2></div><p>Core skills across programming, machine learning, deep learning, generative AI, backend development and software quality.</p></div>
           <div className="skills-grid">{skillGroups.map((group, i) => <article className="skill-card" key={group.title}><div className="skill-card-heading"><span className="skill-index">0{i + 1}</span><h3>{group.title}</h3></div><ul className="skill-tags" aria-label={group.title + " skills"}>{group.skills.map((skill) => <li className="skill-tag" key={skill}>{skill}</li>)}</ul></article>)}</div>
         </section>
 
@@ -300,7 +302,7 @@ export default function Index() {
         </section>
 
         <section className="contact section-pad" id="contact" aria-labelledby="contact-title">
-          <div className="contact-grid"><div className="contact-copy"><p className="eyebrow">CONTACT</p><h2 id="contact-title">Let’s build something <span>useful.</span></h2><p>I’m open to AI/ML engineering, analytics and data roles. For opportunities or project conversations, send me a note.</p><a className="contact-email" href="mailto:kushalraju098@gmail.com"><Mail size={16} aria-hidden="true" /> kushalraju098@gmail.com <ArrowUpRight size={15} aria-hidden="true" /></a><div className="social-links"><a href="https://github.com/Kushalraju098" target="_blank" rel="noreferrer"><Github size={17} aria-hidden="true" /> GitHub <ExternalLink size={12} aria-hidden="true" /></a><a href="https://linkedin.com/in/kushalpathapati" target="_blank" rel="noreferrer"><Linkedin size={17} aria-hidden="true" /> LinkedIn <ExternalLink size={12} aria-hidden="true" /></a></div><p className="contact-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario, Canada</p></div>
+          <div className="contact-grid"><div className="contact-copy"><p className="eyebrow">CONTACT</p><h2 id="contact-title">Let’s build something <span>useful.</span></h2><p>I’m open to AI/ML engineering, data scientist and analytics roles. For opportunities or project conversations, send me a note.</p><a className="contact-email" href="mailto:kushalraju098@gmail.com"><Mail size={16} aria-hidden="true" /> kushalraju098@gmail.com <ArrowUpRight size={15} aria-hidden="true" /></a><div className="social-links"><a href="https://github.com/Kushalraju098" target="_blank" rel="noreferrer"><Github size={17} aria-hidden="true" /> GitHub <ExternalLink size={12} aria-hidden="true" /></a><a href="https://linkedin.com/in/kushalpathapati" target="_blank" rel="noreferrer"><Linkedin size={17} aria-hidden="true" /> LinkedIn <ExternalLink size={12} aria-hidden="true" /></a></div><p className="contact-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario, Canada</p></div>
             <form className="contact-form" onSubmit={submitContact} noValidate>
               <div className="form-row"><label htmlFor="contact-name">Name</label><input id="contact-name" name="name" autoComplete="name" value={formData.name} onChange={(event) => setFormData({ ...formData, name: event.target.value })} required maxLength={100} /></div>
               <div className="form-row"><label htmlFor="contact-email">Email</label><input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} required maxLength={255} /></div>

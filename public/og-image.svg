@@ -3,9 +3,9 @@
   <rect x="76" y="68" width="52" height="52" rx="9" fill="#315fd4"/>
   <text x="102" y="101" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="16">KP</text>
   <text x="162" y="103" fill="#f8faff" font-family="Arial,sans-serif" font-size="22" font-weight="700">Kushal Pathapati</text>
-  <text x="76" y="252" fill="#9eb7ff" font-family="monospace" font-size="17" letter-spacing="2">APPLIED AI · MACHINE LEARNING · DATA</text>
+  <text x="76" y="252" fill="#9eb7ff" font-family="monospace" font-size="17" letter-spacing="2">AI/ML ENGINEERING · DATA SCIENCE · LLM SYSTEMS</text>
   <text x="72" y="360" fill="#f8faff" font-family="Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-2">AI and data,</text>
   <text x="72" y="456" fill="#9eb7ff" font-family="Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-2">built with a QA mindset.</text>
   <path d="M76 520h1048" stroke="#34415a"/>
-  <text x="76" y="560" fill="#c3ccdc" font-family="monospace" font-size="15" letter-spacing="2">APPLIED AI · MACHINE LEARNING · ANALYTICS</text>
+  <text x="76" y="560" fill="#c3ccdc" font-family="monospace" font-size="15" letter-spacing="2">AI/ML ENGINEERING · DATA SCIENCE · ANALYTICS</text>
 </svg>
