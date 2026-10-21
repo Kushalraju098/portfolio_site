@@ -131,6 +131,13 @@ const experience = [
   },
 ];
 
+const facts = [
+  { label: "EXPERIENCE", value: "3+ years", note: "Software QA, test automation and financial-data validation" },
+  { label: "FOCUS", value: "AI/ML · Data", note: "LLM applications, RAG, machine learning and analytics" },
+  { label: "CERTIFICATIONS", value: "4 credentials", note: "Microsoft Azure AI, Azure data and DataCamp Power BI" },
+  { label: "LOCATION", value: "Toronto, ON", note: "Open to AI/ML engineering and data roles" },
+];
+
 const education = [
   { qualification: "Postgraduate Diploma, Business Insights and Analytics", institution: "Humber Polytechnic", place: "Toronto, Ontario", dates: "Completed 2026" },
   { qualification: "Bachelor of Technology, Computer Science", institution: "Reva University", place: "Bangalore, India", dates: "2016–2020" },
@@ -192,7 +199,7 @@ function ProjectCaseStudy({ project, index }: { project: (typeof projects)[numbe
       </div>
       {project.image && <div className="project-visual"><img src={project.image} alt={project.imageAlt} loading="lazy" /><p>Model comparison figure included in the project repository.</p></div>}
       {project.workflowImage && <figure className="project-visual project-visual-small"><img src={project.workflowImage} alt={project.workflowAlt} loading="lazy" /><figcaption>n8n workflow export from the project repository. Provider credentials must be configured in an n8n instance.</figcaption></figure>}
-      {project.images && <div className="cyber-visuals">{project.images.map((image) => <figure key={image.alt}><img src={image.src} alt={image.alt} loading="lazy" /><figcaption>{image.alt}</figcaption></figure>)}</div>}
+      {project.images && <div className="cyber-visuals">{project.images.map((image) => <figure key={image.alt}><a href={image.src} target="_blank" rel="noreferrer" aria-label={"Open full-size chart: " + image.alt}><img src={image.src} alt={image.alt} loading="lazy" /></a><figcaption>{image.alt}</figcaption></figure>)}</div>}
     </article>
   );
 }
@@ -248,7 +255,7 @@ export default function Index() {
           <a className="brand" href="#home" onClick={closeMenu} aria-label="Kushal Pathapati, home"><span className="brand-mark">KP</span><span>Kushal Pathapati</span></a>
           <button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="primary-nav" aria-label={menuOpen ? "Close navigation" : "Open navigation"}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button>
           <div className={menuOpen ? "nav-links is-open" : "nav-links"} id="primary-nav">
-            {["Work", "Experience", "Skills", "About", "Education", "Certifications", "Contact"].map((item) => <a href={item === "Work" ? "#projects" : "#" + item.toLowerCase()} key={item} onClick={closeMenu}>{item}</a>)}
+            {["About", "Projects", "Experience", "Skills", "Certifications", "Education", "Contact"].map((item) => <a href={"#" + item.toLowerCase()} key={item} onClick={closeMenu}>{item}</a>)}
             <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noreferrer">Resume <ArrowUpRight size={15} aria-hidden="true" /></a>
           </div>
         </nav>
@@ -259,16 +266,22 @@ export default function Index() {
           <div className="hero-inner">
             <div className="hero-copy">
               <div className="availability"><span className="availability-dot" /> TORONTO, ON <span className="availability-sep">·</span> OPEN TO OPPORTUNITIES</div>
+              <p className="hero-name">Hi, I’m <strong>Kushal Pathapati</strong></p>
               <h1 id="hero-title">AI and data,<br /><span>built with a QA mindset.</span></h1>
               <p className="hero-lede">I build practical LLM and analytics applications with the testing discipline I developed in financial-data validation and software quality. I’m open to AI/ML engineering and data scientist roles.</p>
-              <div className="hero-actions"><a className="button button-dark" href="#projects">Explore my work <ArrowDown size={16} aria-hidden="true" /></a><a className="button button-outline" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15} aria-hidden="true" /></a></div>
+              <div className="hero-actions"><a className="button button-dark" href="#projects">Explore my work <ArrowDown size={16} aria-hidden="true" /></a><a className="button button-outline" href="/resume.pdf" target="_blank" rel="noreferrer">View resume <ArrowUpRight size={15} aria-hidden="true" /></a><span className="hero-social"><a href="https://github.com/Kushalraju098" target="_blank" rel="noreferrer" aria-label="GitHub profile"><Github size={18} aria-hidden="true" /></a><a href="https://linkedin.com/in/kushalpathapati" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><Linkedin size={18} aria-hidden="true" /></a></span></div>
             </div>
             <figure className="hero-profile"><img src={profilePhoto} alt="Kushal Pathapati" fetchPriority="high" /><figcaption className="profile-caption"><span className="profile-location"><MapPin size={14} aria-hidden="true" /> Toronto, Ontario</span><span className="profile-note-label">FOCUS AREAS</span><span className="profile-focus">AI/ML Engineering <i>·</i> Data Scientist</span></figcaption></figure>
           </div>
         </section>
 
+        <section className="intro section-pad" id="about" aria-labelledby="about-title">
+          <div className="section-heading"><div><p className="eyebrow">ABOUT</p><h2 id="about-title">From testing systems <span>to building them.</span></h2></div><div className="intro-copy"><p>I spent more than three years validating financial data and automating test workflows at Publicis Sapient and Promaestro. I now apply that rigour to machine learning, LLM applications and analytics.</p><p>My recent work includes an evidence-grounded financial research assistant, an XGBoost-driven retail inventory workflow and a decade-long analysis of Canadian cybercrime data. I focus on useful outcomes, clear evidence and systems that handle failure thoughtfully.</p></div></div>
+          <dl className="fact-grid">{facts.map((fact) => <div className="fact" key={fact.label}><dt>{fact.label}</dt><dd><strong>{fact.value}</strong><span>{fact.note}</span></dd></div>)}</dl>
+        </section>
+
         <section className="projects-section section-pad" id="projects" aria-labelledby="projects-title">
-          <div className="section-heading projects-heading"><div><p className="eyebrow">SELECTED PROJECTS</p><h2 id="projects-title">Work across <span>AI and analytics.</span></h2></div><p>Applied AI, machine learning and data storytelling. Each case study covers the approach, evidence and trade-offs.</p></div>
+          <div className="section-heading projects-heading"><div><p className="eyebrow">FEATURED PROJECTS</p><h2 id="projects-title">Work across <span>AI and analytics.</span></h2></div><p>Applied AI, machine learning and data storytelling. Each case study covers the approach, evidence and trade-offs.</p></div>
           <div className="project-cards">
             {projects.map((project, index) => <div className={`project-entry project-entry-${project.slug}`} key={project.slug}>
               <article className={`project-card project-${project.slug}`}>
@@ -294,17 +307,14 @@ export default function Index() {
           <dl className="skills-table">{skillGroups.map((group, i) => <div className="skills-row" key={group.title}><dt><span className="skill-index">{String(i + 1).padStart(2, "0")}</span>{group.title}</dt><dd><ul className="skill-items">{group.skills.map((skill) => { const open = skill.indexOf(" ("); return <li key={skill}>{open === -1 ? skill : <>{skill.slice(0, open)} <span className="skill-detail">{skill.slice(open + 1)}</span></>}</li>; })}</ul></dd></div>)}</dl>
         </section>
 
-        <section className="intro section-pad" id="about" aria-labelledby="about-title">
-          <div className="section-heading"><div><p className="eyebrow">ABOUT</p><h2 id="about-title">Quality engineering, applied to <span>AI and data.</span></h2></div><div className="intro-copy"><p>I bring experience validating financial data and automating test workflows to applied AI and analytics. My project work spans retail inventory analysis, Canadian cybercrime trends and evidence-grounded LLM applications.</p><p>I focus on useful outcomes, clear evidence and systems that handle failure thoughtfully.</p></div></div>
-        </section>
-
-        <section className="education section-pad" id="education" aria-labelledby="education-title">
-          <div className="education-grid"><div><p className="eyebrow">EDUCATION</p><h2 id="education-title">Learning that supports <span>the work.</span></h2><div className="education-list">{education.map((item) => <article className="education-item" key={item.institution}><div><h3>{item.qualification}</h3><p>{item.institution} <span>·</span> {item.place}</p></div><span className="education-date">{item.dates}</span></article>)}</div></div></div>
-        </section>
-
         <section className="certifications-section section-pad" id="certifications" aria-labelledby="certifications-title">
           <div className="section-heading"><div><p className="eyebrow">CERTIFICATIONS</p><h2 id="certifications-title">Credentials for <span>AI and data.</span></h2></div><p>Certifications and focused training across Azure AI, data fundamentals and Power BI.</p></div>
           <div className="credential-list">{certifications.map((cert) => <article className={`credential ${cert.code === "AI-103" ? "credential-featured" : "credential-secondary"}`} key={cert.code}><div className="credential-mark" aria-hidden="true">{cert.provider === "Microsoft" ? <img className="microsoft-cert-badge" src={`/microsoft-certified-${cert.badge}-badge.svg`} alt="" /> : <img className="datacamp-logomark" src="/datacamp-logomark.svg" alt="" />}</div><div className="credential-details"><span className="credential-provider">{cert.provider}{cert.provider === "DataCamp" ? null : <> <b>·</b> {cert.code}</>}</span><strong>{cert.title}</strong></div><a className="credential-link" href={cert.href} target="_blank" rel="noreferrer" aria-label={"View credential: " + cert.title}><ExternalLink size={16} aria-hidden="true" /></a></article>)}</div>
+        </section>
+
+        <section className="education section-pad" id="education" aria-labelledby="education-title">
+          <div className="section-heading"><div><p className="eyebrow">EDUCATION</p><h2 id="education-title">Learning that supports <span>the work.</span></h2></div><p>Formal training in computer science, followed by postgraduate study in business insights and analytics.</p></div>
+          <div className="education-list">{education.map((item) => <article className="education-item" key={item.institution}><span className="education-date">{item.dates}</span><h3>{item.qualification}</h3><p>{item.institution} <span>·</span> {item.place}</p></article>)}</div>
         </section>
 
         <section className="contact section-pad" id="contact" aria-labelledby="contact-title">
