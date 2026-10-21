@@ -90,18 +90,18 @@ const projects = [
 ];
 
 const skillGroups = [
-  { title: "Programming Languages & SQL", skills: ["Python (Pandas, NumPy, scikit-learn, Matplotlib)", "SQL / MySQL (joins, CTEs, subqueries, window functions, indexing, transactions, views, stored procedures)", "R (tidyverse, ggplot2)"] },
-  { title: "Data Analytics & Statistics", skills: ["Exploratory data analysis", "Data cleaning & validation", "Feature engineering", "Descriptive & inferential statistics", "Hypothesis testing", "Probability", "Linear algebra", "Statistical analysis", "Trend & comparative analysis", "KPI development", "Predictive modeling", "Data storytelling"] },
-  { title: "Business Intelligence & Visualization", skills: ["Power BI (DAX, measures, data transformations, R integration)", "Excel (VLOOKUP, pivot tables, conditional formatting)", "Tableau", "IBM Cognos Analytics", "SAS Viya", "SPSS"] },
-  { title: "Data Engineering & Automation", skills: ["ETL pipelines", "Data transformation & modeling", "Metadata validation", "Workflow orchestration", "Pipeline automation", "FastAPI", "Flask", "Pydantic", "REST APIs", "n8n", "Web scraping", "API integration", "Databricks", "Google Colab"] },
-  { title: "Machine Learning", skills: ["Supervised & unsupervised learning", "Regression", "Classification", "Clustering", "Decision Trees", "K-Nearest Neighbors (KNN)", "Naive Bayes", "Support Vector Machines (SVM)", "Random Forest", "XGBoost", "Principal Component Analysis (PCA)", "Association Rule Mining", "Feature selection", "Model evaluation", "Cross-validation", "Hyperparameter tuning"] },
-  { title: "Deep Learning & Computer Vision", skills: ["Neural networks", "CNNs", "RNNs", "LSTM", "GRU", "Transformers", "TensorFlow", "Keras", "OpenCV", "Image classification", "Object detection", "Image segmentation", "YOLO", "Transfer learning"] },
-  { title: "NLP & Text Analytics", skills: ["Text preprocessing", "Tokenization", "Stemming & lemmatization", "Bag of Words (BoW)", "TF-IDF", "Word embeddings", "Word2Vec", "Sentence Transformers", "BERT", "Text classification", "Text clustering", "Sentiment analysis", "Named Entity Recognition (NER)", "Topic modeling", "NLTK", "spaCy"] },
-  { title: "Generative AI & LLM Engineering", skills: ["LLM architecture", "Prompt engineering (zero-shot & few-shot)", "Retrieval-Augmented Generation (RAG)", "Document processing & chunking", "Embeddings", "Vector retrieval", "Similarity & hybrid search", "LLM & RAG evaluation", "Fine-tuning", "Quantization", "LLM guardrails", "Input/output validation", "Hugging Face", "LangChain", "LangGraph", "LlamaIndex", "CrewAI"] },
-  { title: "AI Agents & Vector Databases", skills: ["Model Context Protocol (MCP)", "MCP servers", "AI agent workflows", "Tool calling", "External tool integration", "Semantic search", "Metadata filtering", "FAISS", "ChromaDB", "Pinecone"] },
-  { title: "Cloud Platforms", skills: ["Microsoft Azure", "Google Cloud Platform (GCP)", "Google Cloud Run"] },
-  { title: "Software Engineering & DevOps", skills: ["Git", "GitHub", "Jira", "Agile methodology", "Docker", "Selenium", "Pytest", "Robot Framework", "Jenkins", "CI/CD"] },
-  { title: "Professional Skills", skills: ["Cross-functional collaboration", "Written & verbal communication", "Stakeholder reporting", "Attention to detail", "Managing competing priorities", "Agile collaboration"] },
+  { title: "Programming Languages & SQL", skills: ["Python (Pandas, NumPy, scikit-learn, Matplotlib)", "SQL (MySQL: Joins, CTEs, Subqueries, Window Functions, Indexing, Transactions, Views, Stored Procedures)", "R (tidyverse, ggplot2)"] },
+  { title: "Data Analytics & Statistics", skills: ["Exploratory Data Analysis (EDA)", "Data Cleaning & Validation", "Feature Engineering", "Descriptive & Inferential Statistics", "Hypothesis Testing", "Probability", "Linear Algebra", "Statistical Analysis", "Trend & Comparative Analysis", "KPI Development", "Predictive Modeling", "Data Storytelling"] },
+  { title: "Business Intelligence & Visualization", skills: ["Power BI (DAX, Measures, Data Transformations, R Integration)", "Microsoft Excel (VLOOKUP, Pivot Tables, Conditional Formatting)", "Tableau", "IBM Cognos Analytics", "SAS Viya", "SPSS"] },
+  { title: "Data Engineering & Automation", skills: ["ETL Pipelines", "Data Transformation", "Data Modeling", "Metadata Validation", "Workflow Orchestration", "Pipeline Automation", "FastAPI", "REST APIs", "n8n", "Web Scraping", "API Integration", "Databricks", "Google Colab"] },
+  { title: "Machine Learning", skills: ["Supervised & Unsupervised Learning", "Regression", "Classification", "Clustering", "Decision Trees", "K-Nearest Neighbors (KNN)", "Naive Bayes", "Support Vector Machines (SVM)", "Random Forest", "XGBoost", "Principal Component Analysis (PCA)", "Association Rule Mining", "Feature Selection", "Model Evaluation", "Cross-Validation", "Hyperparameter Tuning"] },
+  { title: "Deep Learning & Computer Vision", skills: ["Neural Networks", "CNNs", "RNNs", "LSTM", "GRU", "Transformers", "TensorFlow", "Keras", "OpenCV", "Image Classification", "Object Detection", "Image Segmentation", "YOLO", "Transfer Learning"] },
+  { title: "NLP & Text Analytics", skills: ["Text Preprocessing", "Tokenization", "Stemming & Lemmatization", "Bag of Words (BoW)", "TF-IDF", "Word Embeddings", "Word2Vec", "Sentence Transformers", "BERT", "Text Classification", "Text Clustering", "Sentiment Analysis", "Named Entity Recognition (NER)", "Topic Modeling", "NLTK", "spaCy"] },
+  { title: "Generative AI & LLM Engineering", skills: ["LLM Architecture", "Prompt Engineering (Zero-Shot & Few-Shot Prompting)", "Retrieval-Augmented Generation (RAG)", "Document Processing & Chunking", "Embeddings", "Vector Retrieval", "Similarity & Hybrid Search", "LLM & RAG Evaluation", "Fine-Tuning", "Quantization", "LLM Guardrails", "Input/Output Validation", "Hugging Face", "LangChain", "LangGraph", "LlamaIndex", "CrewAI"] },
+  { title: "AI Agents & Vector Databases", skills: ["Model Context Protocol (MCP)", "MCP Servers", "AI Agent Workflows", "Tool Calling", "External Tool Integration", "Semantic Search", "Metadata Filtering", "FAISS", "ChromaDB", "Pinecone"] },
+  { title: "Cloud Platforms", skills: ["Microsoft Azure", "Google Cloud Platform (GCP)"] },
+  { title: "Software Engineering & DevOps", skills: ["Git", "GitHub", "Jira", "Agile Methodology", "Docker"] },
+  { title: "Professional Skills", skills: ["Cross-Functional Collaboration", "Written & Verbal Communication", "Stakeholder Reporting", "Attention to Detail", "Managing Competing Priorities", "Agile Collaboration"] },
 ];
 
 const experience = [
@@ -290,8 +290,8 @@ export default function Index() {
         </section>
 
         <section className="skills section-pad" id="skills" aria-labelledby="skills-title">
-          <div className="section-heading"><div><p className="eyebrow">SKILLS & TOOLKIT</p><h2 id="skills-title">A broad toolkit for <span>AI and data work.</span></h2></div><p>Programming, analytics, machine learning, deep learning, LLM engineering, cloud and collaboration skills in one easy-to-scan directory.</p></div>
-          <div className="skills-grid">{skillGroups.map((group, i) => <article className="skill-card" key={group.title}><div className="skill-card-heading"><span className="skill-index">{String(i + 1).padStart(2, "0")}</span><h3>{group.title}</h3></div><p className="skill-list">{group.skills.join(" · ")}</p></article>)}</div>
+          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">Technical <span>skills.</span></h2></div><p>Languages, analytics, machine learning, deep learning, NLP, generative AI, cloud and collaboration.</p></div>
+          <dl className="skills-table">{skillGroups.map((group, i) => <div className="skills-row" key={group.title}><dt><span className="skill-index">{String(i + 1).padStart(2, "0")}</span>{group.title}</dt><dd><ul className="skill-items">{group.skills.map((skill) => { const open = skill.indexOf(" ("); return <li key={skill}>{open === -1 ? skill : <>{skill.slice(0, open)} <span className="skill-detail">{skill.slice(open + 1)}</span></>}</li>; })}</ul></dd></div>)}</dl>
         </section>
 
         <section className="intro section-pad" id="about" aria-labelledby="about-title">
