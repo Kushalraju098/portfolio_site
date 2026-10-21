@@ -165,7 +165,7 @@ skill_lines = [
     ("Deep learning and NLP", "TensorFlow, neural networks, transformers, NLP, text preprocessing"),
     ("Generative AI", "RAG, embeddings, LangChain, LangGraph, AI agents, MCP, LLM evaluation"),
     ("Backend and integrations", "FastAPI, Flask, REST APIs, Pydantic"),
-    ("Automation and quality", "Selenium"),
+    ("Automation and quality", "Selenium, Pytest, Robot Framework"),
 ]
 for label, values in skill_lines:
     story.append(Paragraph("<b><font color='#275a42'>" + label + ":</font></b> " + values, styles["Skill"]))

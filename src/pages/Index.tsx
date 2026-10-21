@@ -95,7 +95,7 @@ const skillGroups = [
   { title: "Deep learning & NLP", skills: ["TensorFlow", "Neural networks", "Transformers", "NLP", "Text preprocessing"] },
   { title: "Generative AI", skills: ["RAG", "Embeddings", "LangChain", "LangGraph", "AI agents", "MCP", "LLM evaluation"] },
   { title: "Backend & integrations", skills: ["FastAPI", "Flask", "REST APIs", "Pydantic"] },
-  { title: "Automation & software quality", skills: ["Selenium"] },
+  { title: "Automation & software quality", skills: ["Selenium", "Pytest", "Robot Framework"] },
 ];
 
 const experience = [
@@ -284,7 +284,7 @@ export default function Index() {
         </section>
 
         <section className="skills section-pad" id="skills" aria-labelledby="skills-title">
-          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">A focused toolkit for <span>AI and data work.</span></h2></div><p>Thirty skills across programming, machine learning, deep learning, generative AI, backend development and software quality.</p></div>
+          <div className="section-heading"><div><p className="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-title">A focused toolkit for <span>AI and data work.</span></h2></div><p>Core skills across programming, machine learning, deep learning, generative AI, backend development and software quality.</p></div>
           <div className="skills-grid">{skillGroups.map((group, i) => <article className="skill-card" key={group.title}><div className="skill-card-heading"><span className="skill-index">0{i + 1}</span><h3>{group.title}</h3></div><ul className="skill-tags" aria-label={group.title + " skills"}>{group.skills.map((skill) => <li className="skill-tag" key={skill}>{skill}</li>)}</ul></article>)}</div>
         </section>
 
